@@ -1,0 +1,43 @@
+site_name: Sumô Lego - Documentação 
+site_url: https://rinobot-team.github.io/Lego-Docs/
+repo_url: https://github.com/rinobot-team/Lego-Docs
+repo_name: Lego-Docs
+nav:
+  - Home: index.md
+  - Configuração:
+    - Índice: config-projeto/index.md 
+    - Git: config-projeto/config-git.md 
+    - IDEs: config-projeto/config-ide.md 
+    - Setup NXT: config-projeto/setup-nxt.md 
+    - Setup EV3: config-projeto/setup-ev3.md 
+    - Documentação: config-projeto/documentacao.md 
+theme:
+  name: material
+  logo: img/favicon.ico
+  features:
+    - content.code.annotate
+    - content.tabs.link
+    - navigation.indexes
+    - navigation.tracking
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      primary: red
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Tema Escuro
+    - media: "(prefers-color-scheme: dark)"
+      primary: red
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Tema Claro
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.superfences
+  - pymdownx.tilde
