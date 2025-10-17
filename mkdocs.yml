@@ -13,7 +13,7 @@ nav:
     - Documentação: config-projeto/documentacao.md 
 theme:
   name: material
-  logo: img/favicon.ico
+  logo: img/favicon.png
   features:
     - content.code.annotate
     - content.tabs.link
