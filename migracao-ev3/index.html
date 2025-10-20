@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://rinobot-team.github.io/Lego-Docs/config-projeto/">
+        <link rel="canonical" href="https://rinobot-team.github.io/Lego-Docs/migracao-ev3/">
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../config-projeto/documentacao/">
       
       
-        <link rel="next" href="config-git/">
+        <link rel="next" href="motores/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#configuracao-de-projeto" class="md-skip">
+        <a href="#migracao-para-o-ev3" class="md-skip">
           Skip to content
         </a>
       
@@ -273,8 +273,6 @@
       
   
   
-    
-  
   
   
     
@@ -298,15 +296,15 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../config-projeto/" class="md-nav__link ">
               
   
   
@@ -319,13 +317,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_2" id="__nav_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Configuração
@@ -341,7 +339,7 @@
   
   
     <li class="md-nav__item">
-      <a href="config-git/" class="md-nav__link">
+      <a href="../config-projeto/config-git/" class="md-nav__link">
         
   
   
@@ -364,7 +362,7 @@
   
   
     <li class="md-nav__item">
-      <a href="config-ide/" class="md-nav__link">
+      <a href="../config-projeto/config-ide/" class="md-nav__link">
         
   
   
@@ -387,7 +385,7 @@
   
   
     <li class="md-nav__item">
-      <a href="setup-nxt/" class="md-nav__link">
+      <a href="../config-projeto/setup-nxt/" class="md-nav__link">
         
   
   
@@ -410,7 +408,7 @@
   
   
     <li class="md-nav__item">
-      <a href="setup-ev3/" class="md-nav__link">
+      <a href="../config-projeto/setup-ev3/" class="md-nav__link">
         
   
   
@@ -433,7 +431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="documentacao/" class="md-nav__link">
+      <a href="../config-projeto/documentacao/" class="md-nav__link">
         
   
   
@@ -460,6 +458,8 @@
       
   
   
+    
+  
   
   
     
@@ -479,15 +479,15 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../migracao-ev3/" class="md-nav__link ">
+            <a href="./" class="md-nav__link md-nav__link--active">
               
   
   
@@ -500,13 +500,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+              <label class="md-nav__link md-nav__link--active" for="__nav_3" id="__nav_3_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Migração EV3
@@ -522,7 +522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../migracao-ev3/motores/" class="md-nav__link">
+      <a href="motores/" class="md-nav__link">
         
   
   
@@ -545,7 +545,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../migracao-ev3/sensores/" class="md-nav__link">
+      <a href="sensores/" class="md-nav__link">
         
   
   
@@ -568,7 +568,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../migracao-ev3/lcd/" class="md-nav__link">
+      <a href="lcd/" class="md-nav__link">
         
   
   
@@ -628,15 +628,19 @@
   
 
 
-<h1 id="configuracao-de-projeto">Configuração de Projeto</h1>
-<p>Para começar a desenvolver na categoria Sumô Lego são necessários alguns passos para configurar seu ambiente.</p>
-<p>O passo a passo pode ser encontrado nestes documentos:</p>
+<h1 id="migracao-para-o-ev3">Migração para o EV3</h1>
+<p>Esta seção aborda o processo de migração do código e configuração para o robô baseado no EV3, destacando as principais diferenças e adaptações necessárias em relação ao NXT.</p>
+<p>Pontos importantes a serem considerados durante a migração:</p>
 <ul>
-<li><a href="config-git/">Configuração do Git</a>  </li>
-<li><a href="config-ide/">Configuração da IDE</a>  </li>
-<li><a href="setup-nxt/">Setup NXT</a>  </li>
-<li><a href="setup-ev3/">Setup EV3</a>  </li>
-<li><a href="documentacao/">Documentação</a>  </li>
+<li>Certifique-se de seguir as instruções de configuração do EV3 na seção <a href="../config-projeto/setup-ev3/">Setup do EV3</a>.</li>
+<li>O SDK para o EV3 é diferente do NXT, então você precisará adaptar seu código para usar as bibliotecas e APIs específicas do EV3. Enquanto o NXT usa uma API procedural baseada em C, o EV3 é 100% baseado em C++11 e orientado a objetos.</li>
+<li>O RobotC roda como um firmware no NXT, enquanto o EV3DEV C++ roda como um programa de usuário no EV3, que possui um sistema operacional Linux completo (baseado em Debian). Isso afeta como a interação com o hardware e o sistema é realizada: O hardware é exposto como arquivos na pasta <code>/sys/class</code>, e a comunicação com sensores e atuadores é feita através da leitura e escrita nesses arquivos.</li>
+</ul>
+<p>Essa documentação ainda está em desenvolvimento e ainda não cobre todos os aspectos da migração, até o momento há essas interfaces:</p>
+<ul>
+<li><a href="motores/">Motores</a>.</li>
+<li><a href="sensores/">Sensores</a>.</li>
+<li><a href="lcd/">LCD</a>.</li>
 </ul>
 
 
