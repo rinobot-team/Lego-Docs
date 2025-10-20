@@ -11,6 +11,11 @@ nav:
     - Setup NXT: config-projeto/setup-nxt.md 
     - Setup EV3: config-projeto/setup-ev3.md 
     - Documentação: config-projeto/documentacao.md 
+  - Migração EV3:
+    - Índice: migracao-ev3/index.md
+    - Motores: migracao-ev3/motores.md
+    - Sensores: migracao-ev3/sensores.md
+    - LCD: migracao-ev3/lcd.md
 theme:
   name: material
   logo: img/favicon.png

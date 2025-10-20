@@ -460,9 +460,69 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#todo-como-configurar-o-ev3-para-receber-nosso-codigo" class="md-nav__link">
+  <a href="#cartao-sd" class="md-nav__link">
     <span class="md-ellipsis">
-      TODO: Como configurar o EV3 para receber nosso código?
+      Cartão SD
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracao-de-rede-via-bluetooth" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuração de Rede via Bluetooth
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuração de Rede via Bluetooth">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu-1604" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ubuntu (16.04)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#android" class="md-nav__link">
+    <span class="md-ellipsis">
+      Android
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracao-de-rede-via-cabo-usb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuração de Rede via Cabo USB
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acesso-via-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acesso via SSH
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rodando-um-programa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rodando um Programa
     </span>
   </a>
   
@@ -534,9 +594,69 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#todo-como-configurar-o-ev3-para-receber-nosso-codigo" class="md-nav__link">
+  <a href="#cartao-sd" class="md-nav__link">
     <span class="md-ellipsis">
-      TODO: Como configurar o EV3 para receber nosso código?
+      Cartão SD
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracao-de-rede-via-bluetooth" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuração de Rede via Bluetooth
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuração de Rede via Bluetooth">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu-1604" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ubuntu (16.04)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#android" class="md-nav__link">
+    <span class="md-ellipsis">
+      Android
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracao-de-rede-via-cabo-usb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuração de Rede via Cabo USB
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acesso-via-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acesso via SSH
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rodando-um-programa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rodando um Programa
     </span>
   </a>
   
@@ -562,7 +682,77 @@
 
 
 <h1 id="setup-do-ev3">Setup do EV3</h1>
-<h2 id="todo-como-configurar-o-ev3-para-receber-nosso-codigo">TODO: Como configurar o EV3 para receber nosso código?</h2>
+<h2 id="cartao-sd">Cartão SD</h2>
+<p>O EV3 utiliza um cartão SD para armazenar o sistema operacional e os arquivos do usuário. Para configurar o cartão SD, siga os passos abaixo:</p>
+<ol>
+<li>Baixe a imagem do SO EV3DEV a partir do <a href="https://www.ev3dev.org/downloads/">repositório oficial</a>.</li>
+<li>Use uma ferramenta como o <a href="https://www.balena.io/etcher/">Etcher</a> para gravar a imagem no cartão SD. Baixe até a versão 17 do Etcher, pois versões mais recentes podem apresentar problemas.</li>
+<li>Insira o cartão SD no computador com um adaptador de cartão SD, inicialize o Etcher, selecione a imagem baixada e o cartão SD como destino, e clique em <code>Flash!</code> (<strong>Isso vai apagar todo o conteúdo do cartão SD</strong>).</li>
+<li>Após a gravação, insira o cartão SD no EV3 e ligue o dispositivo. O EV3 deve iniciar com o sistema operacional EV3DEV.</li>
+</ol>
+<h2 id="configuracao-de-rede-via-bluetooth">Configuração de Rede via Bluetooth</h2>
+<p>Para conectar o EV3 a uma rede Wi-Fi, é preciso conectar via bluetooth à um computador ou smartphone e habilitar o <em>bluetooth tethering</em>:</p>
+<h3 id="ubuntu-1604">Ubuntu (16.04)</h3>
+<blockquote>
+<p>No PC na sala há uma maquina virtual com Ubuntu 16.04 pronta para uso.</p>
+</blockquote>
+<ol>
+<li>No EV3, vá em <code>Brickman &gt; Wireless and Networks &gt; Bluetooth &gt; Visibile</code> e habilite a visibilidade.</li>
+<li>No computador, abra o Blueman e no menu <code>View &gt; Local Services</code> habilite a opção <code>Network Access Point</code> e a opção de <code>PAN</code> (Personal Area Network).</li>
+<li>No Blueman, clique em <code>Search</code> para procurar o EV3, depois clique em <code>Pair</code> (ícone de chaves) para emparelhar o EV3 com o computador. Cliquei na estrela para salvar o EV3 como confiável.</li>
+<li>No EV3, aceite o emparelhamento e cheque o código PIN (que aparece no computador).</li>
+<li>Agora, no EV3, você deve ter a opção <code>Connect to Network</code> habilitada no menu de Bluetooth. Clique nela para conectar o EV3 à rede do computador.</li>
+<li>Se tudo der certo, o EV3 deve ter o estado de rede alterado para <code>Online</code>.</li>
+</ol>
+<h3 id="android">Android</h3>
+<ol>
+<li>No EV3, vá em <code>Brickman &gt; Wireless and Networks &gt; Bluetooth &gt; Visibile</code> e habilite a visibilidade.</li>
+<li>No smartphone, ative o Bluetooth e emparelhe com o EV3.</li>
+<li>No smartphone, ative o <code>Bluetooth Tethering</code> (em <code>Configurações &gt; Rede e Internet &gt; Hotspot e tethering</code>, ou semelhante).</li>
+<li>Confirme o emparelhamento no EV3, checando o código PIN.</li>
+<li>Agora, no EV3, você deve ter a opção <code>Connect to Network</code> habilitada no menu de Bluetooth. Clique nela para conectar o EV3 à rede do smartphone.</li>
+<li>Se tudo der certo, o EV3 deve ter o estado de rede alterado para <code>Online</code>.</li>
+</ol>
+<blockquote>
+<p>Existe uma forma de conectar via windows, mas não conseguimos fazer funcionar durante os testes.</p>
+</blockquote>
+<h2 id="configuracao-de-rede-via-cabo-usb">Configuração de Rede via Cabo USB</h2>
+<p>Também é possível conectar o EV3 à rede via cabo USB. Esse é o método indicado para <strong>Windows 10</strong>, mas ainda não foi testado. Para isso, siga os passos abaixo:</p>
+<ol>
+<li>Conecte o EV3 ao computador usando um cabo USB.</li>
+<li>Vá em <code>Dispositivos e Impressoras</code> no Windows e localize o EV3, ele deve aparecer com o nome 'Remote NDIS Compatible Device'.</li>
+<li>Espere o Windows instalar os drivers necessários.</li>
+<li>Após a instalação, clique com o botão direito no EV3 em <code>Dispositivos e Impressoras</code> e selecione <code>Configurações de Rede</code>.</li>
+<li>Veja qual tipo de acesso à rede está disponível (geralmente <code>Internet - Network 5</code> ou semelhante).</li>
+<li>Vá em <code>Alterar as Configurações do Adaptador</code> no painel lateral esquerdo e Renomeie a conexão do EV3 para algo fácil de identificar, como <code>EV3 USB</code>.</li>
+<li>Para compartilhar a conexão de internet do computador com o EV3, clique com o botão direito na conexão de internet ativa (Wi-Fi ou Ethernet) e selecione <code>Propriedades</code>.</li>
+<li>Vá até a aba <code>Compartilhamento</code> e marque a opção <code>Permitir que outros usuários da rede se conectem pela conexão deste computador à Internet</code>.</li>
+<li>No menu suspenso abaixo, selecione a conexão do EV3 que você renomeou anteriormente (<code>EV3 USB</code>).</li>
+<li>Clique em <code>OK</code> para salvar as configurações.</li>
+<li>No EV3, vá em <code>Brickman &gt; Wireless and Networks &gt; USB</code> e selecione <code>Connect to Network</code>.</li>
+<li>Se tudo der certo, o EV3 deve ter o estado de rede alterado para <code>Online</code>.</li>
+</ol>
+<h2 id="acesso-via-ssh">Acesso via SSH</h2>
+<p>Após conectar o EV3 à rede, você pode acessar o dispositivo via SSH. O endereço IP do EV3 pode ser encontrado no menu <code>Brickman &gt; Wireless and Networks &gt; Wi-Fi &gt; Status</code>.</p>
+<p>Use o seguinte comando no terminal do seu computador para acessar o EV3 via SSH:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ssh<span class="w"> </span>robot@&lt;IP_DO_EV3&gt;
+</code></pre></div>
+<p>Também é possível enviar arquivos para o EV3 usando SCP:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>scp<span class="w"> </span>&lt;ARQUIVO&gt;<span class="w"> </span>robot@&lt;IP_DO_EV3&gt;:/home/robot/
+</code></pre></div>
+<blockquote>
+<p>Para a primeira conexão, a senha padrão é <code>maker</code>.</p>
+</blockquote>
+<h2 id="rodando-um-programa">Rodando um Programa</h2>
+<p>Para rodar um programa no EV3, você pode transferir o arquivo do programa para o EV3 via SCP e depois executá-lo via SSH. Por exemplo:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>scp<span class="w"> </span>meu_programa.py<span class="w"> </span>robot@&lt;IP_DO_EV3&gt;:/home/robot/
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ssh<span class="w"> </span>robot@&lt;IP_DO_EV3&gt;<span class="w"> </span><span class="s1">&#39;python3 /home/robot/meu_programa.py&#39;</span>
+</code></pre></div>
+<p>Para programas C/C++, é aconselhável compilar no computador host e transferir o binário para o EV3, garantindo que todas as dependências estejam satisfeitas:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>scp<span class="w"> </span>meu_programa<span class="w"> </span>robot@&lt;IP_DO_EV3&gt;:/home/robot/
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>ssh<span class="w"> </span>robot@&lt;IP_DO_EV3&gt;<span class="w"> </span><span class="s1">&#39;/home/robot/meu_programa&#39;</span>
+</code></pre></div>
+<p>Também é possível rodar programas pela interface do Brickman, navegando até o arquivo do programa e selecionando-o para execução.</p>
 
 
 
