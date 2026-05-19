@@ -59,31 +59,70 @@ Após conectar o EV3 à rede, você pode acessar o dispositivo via SSH. O endere
 Use o seguinte comando no terminal do seu computador para acessar o EV3 via SSH:
 
 ```bash
-ssh robot@<IP_DO_EV3>
+ssh robot@10.42.0.212
 ```
 
 Também é possível enviar arquivos para o EV3 usando SCP:
 
 ```bash
-scp <ARQUIVO> robot@<IP_DO_EV3>:/home/robot/
+scp <ARQUIVO> robot@10.42.0.212:/home/robot/
 ```
 
-> Para a primeira conexão, a senha padrão é `maker`.
+> Para a primeira conexão, a senha padrão é `maker`. Se já está configurado provavelmente colocamos **aquela** senha da Rino 👀.
 
 ## Rodando um Programa
 
 Para rodar um programa no EV3, você pode transferir o arquivo do programa para o EV3 via SCP e depois executá-lo via SSH. Por exemplo:
 
 ```bash
-scp meu_programa.py robot@<IP_DO_EV3>:/home/robot/
-ssh robot@<IP_DO_EV3> 'python3 /home/robot/meu_programa.py'
+scp meu_programa.py robot@10.42.0.212:/home/robot/
+ssh robot@10.42.0.212 'python3 /home/robot/meu_programa.py'
 ```
 
 Para programas C/C++, é aconselhável compilar no computador host e transferir o binário para o EV3, garantindo que todas as dependências estejam satisfeitas:
 
 ```bash
-scp meu_programa robot@<IP_DO_EV3>:/home/robot/
-ssh robot@<IP_DO_EV3> '/home/robot/meu_programa'
+scp meu_programa robot@10.42.0.212:/home/robot/
+ssh robot@10.42.0.212 '/home/robot/meu_programa'
 ```
 
 Também é possível rodar programas pela interface do Brickman, navegando até o arquivo do programa e selecionando-o para execução.
+
+## Erros Comuns
+
+### Conexão não estabelecida
+
+Se você estiver tendo problemas para estabelecer uma conexão com o EV3, certifique-se de que:
+
+- O EV3 está ligado, ele descarrega bem rápido.
+- O dispositivo está dentro do alcance do Bluetooth, caso esteja tentando wireless.
+- As credenciais de acesso estão corretas.
+- O firewall não está bloqueando a conexão, o windows defender é bem chato as vezes.
+- Está usando o cabo USB correto em caso de ligação wired, alguns Micro-USBs são charge-only e não passam dados.
+
+### EV3 reconhece a conexão mas o PC não (Linux)
+
+Este problema foi recorrente na fase de testes com o Linux e é causado por uma incompatiblidade entre o NetworkManager padrão dos Linux modernos e o ConnMan utilizado pelo EV3.
+
+No seu PC rode este comando para identificar o dispositivo do EV3:
+
+```bash
+ip link
+```
+
+Você verá interfaces comuns como `lo`, `eno1` (cabo) ou `wlan0` (wi-fi). Procure por uma interface adicional que geralmente começa com `enp` seguido de `u` (ex: `enp0s20f0u4`) ou `usb0`. Anote este nome.
+
+Depois rode:
+
+```bash
+#Criar perfil da rede: 
+nmcli connection add type ethernet ifname <Nome_da_Interface> con-name "EV3_USB"
+
+# Mudar o IPv4 para compartilhado: 
+nmcli connection modify "EV3_USB" ipv4.method shared
+
+# Subir a interface: 
+nmcli connection up "EV3_USB"
+```
+
+Isto deve funcionar para a maioria dos Linux atuais (Foi testado só no EndeavourOS).
