@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://rinobot-team.github.io/Lego-Docs/migracao-ev3/">
+        <link rel="canonical" href="https://rinobot-team.github.io/Lego-Docs/faria/">
       
       
         <link rel="prev" href="../config-projeto/documentacao/">
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#migracao-para-o-ev3" class="md-skip">
+        <a href="#migracao-para-o-ev3-e-faria" class="md-skip">
           Skip to content
         </a>
       
@@ -516,6 +516,8 @@
       
         
       
+        
+      
     
     
     
@@ -535,7 +537,7 @@
   <span class="md-ellipsis">
     
   
-    Migração EV3
+    FARIA
   
 
     
@@ -557,7 +559,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Migração EV3
+    FARIA
   
 
           </label>
@@ -649,6 +651,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -676,6 +706,25 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#faria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FARIA
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -694,7 +743,7 @@
   
 
 
-<h1 id="migracao-para-o-ev3">Migração para o EV3</h1>
+<h1 id="migracao-para-o-ev3-e-faria">Migração para o EV3 e FARIA</h1>
 <p>Esta seção aborda o processo de migração do código e configuração para o robô baseado no EV3, destacando as principais diferenças e adaptações necessárias em relação ao NXT.</p>
 <p>Pontos importantes a serem considerados durante a migração:</p>
 <ul>
@@ -708,6 +757,10 @@
 <li><a href="sensores/">Sensores</a>.</li>
 <li><a href="lcd/">LCD</a>.</li>
 </ul>
+<h2 id="faria">FARIA</h2>
+<p>O FARIA é o framework de controle que está sendo desenvolvido para o EV3, e tem como objetivo fornecer uma interface semelhante ao que tínhamos no NXT, mas adaptada para as características do EV3 e do EV3DEV C++. Ele ainda está em desenvolvimento, mas a ideia é que ele seja uma camada de abstração sobre o EV3DEV C++, facilitando a migração do código e a implementação de novas funcionalidades como parametrização das configurações dos robôs, multithreading e melhores padrões de código.</p>
+<p>O FARIA é um projeto open-source, e a documentação está sendo construída à medida que o desenvolvimento avança. Para acompanhar o progresso do FARIA, você pode acessar o <a href="https://github.com/rinobot-team/FARIA">repositório oficial no GitHub</a>.</p>
+<p>Para informações sobre a proposta de arquitetura do FARIA, veja a seção <a href="arquitetura/">Arquitetura do FARIA</a>.</p>
 
 
 

@@ -559,6 +559,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Configuração de Rede via Cabo USB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows-10-e-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows (10 e 11)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux-ubuntu-e-arch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linux (Ubuntu e Arch)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -685,6 +713,8 @@
       
         
       
+        
+      
     
     
     
@@ -697,14 +727,14 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../migracao-ev3/" class="md-nav__link ">
+            <a href="../../faria/" class="md-nav__link ">
               
   
   
   <span class="md-ellipsis">
     
   
-    Migração EV3
+    FARIA
   
 
     
@@ -726,7 +756,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Migração EV3
+    FARIA
   
 
           </label>
@@ -741,7 +771,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../migracao-ev3/motores/" class="md-nav__link">
+      <a href="../../faria/motores/" class="md-nav__link">
         
   
   
@@ -769,7 +799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../migracao-ev3/sensores/" class="md-nav__link">
+      <a href="../../faria/sensores/" class="md-nav__link">
         
   
   
@@ -797,7 +827,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../migracao-ev3/lcd/" class="md-nav__link">
+      <a href="../../faria/lcd/" class="md-nav__link">
         
   
   
@@ -805,6 +835,34 @@
     
   
     LCD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faria/arquitetura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
   
 
     
@@ -909,6 +967,34 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Configuração de Rede via Cabo USB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows-10-e-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows (10 e 11)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux-ubuntu-e-arch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linux (Ubuntu e Arch)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1029,40 +1115,38 @@
 <p>Existe uma forma de conectar via windows, mas não conseguimos fazer funcionar durante os testes.</p>
 </blockquote>
 <h2 id="configuracao-de-rede-via-cabo-usb">Configuração de Rede via Cabo USB</h2>
-<p>Também é possível conectar o EV3 à rede via cabo USB. Esse é o método indicado para <strong>Windows 10</strong>, mas ainda não foi testado. Para isso, siga os passos abaixo:</p>
+<h3 id="windows-10-e-11">Windows (10 e 11)</h3>
 <ol>
-<li>Conecte o EV3 ao computador usando um cabo USB.</li>
-<li>Vá em <code>Dispositivos e Impressoras</code> no Windows e localize o EV3, ele deve aparecer com o nome 'Remote NDIS Compatible Device'.</li>
-<li>Espere o Windows instalar os drivers necessários.</li>
-<li>Após a instalação, clique com o botão direito no EV3 em <code>Dispositivos e Impressoras</code> e selecione <code>Configurações de Rede</code>.</li>
-<li>Veja qual tipo de acesso à rede está disponível (geralmente <code>Internet - Network 5</code> ou semelhante).</li>
-<li>Vá em <code>Alterar as Configurações do Adaptador</code> no painel lateral esquerdo e Renomeie a conexão do EV3 para algo fácil de identificar, como <code>EV3 USB</code>.</li>
-<li>Para compartilhar a conexão de internet do computador com o EV3, clique com o botão direito na conexão de internet ativa (Wi-Fi ou Ethernet) e selecione <code>Propriedades</code>.</li>
-<li>Vá até a aba <code>Compartilhamento</code> e marque a opção <code>Permitir que outros usuários da rede se conectem pela conexão deste computador à Internet</code>.</li>
-<li>No menu suspenso abaixo, selecione a conexão do EV3 que você renomeou anteriormente (<code>EV3 USB</code>).</li>
-<li>Clique em <code>OK</code> para salvar as configurações.</li>
-<li>No EV3, vá em <code>Brickman &gt; Wireless and Networks &gt; USB</code> e selecione <code>Connect to Network</code>.</li>
-<li>Se tudo der certo, o EV3 deve ter o estado de rede alterado para <code>Online</code>.</li>
+<li>Conecte o EV3 ao computador usando um cabo USB. Certifique-se de usar um cabo que suporte transferência de dados, não apenas carregamento.</li>
+<li>O Windows deve reconhecer o EV3 como um dispositivo de rede e instalar os drivers automaticamente. Se isso não acontecer, pesquise por "EV3 USB drivers" para baixar e instalar os drivers manualmente.</li>
+<li>Após a instalação, o EV3 deve aparecer como uma nova conexão de rede nas configurações de rede do Windows.</li>
+<li>Com isso, já deve ser possível acessar o EV3 com o IP mostrado no canto superior esquerdo da tela do EV3.</li>
+</ol>
+<h3 id="linux-ubuntu-e-arch">Linux (Ubuntu e Arch)</h3>
+<ol>
+<li>Conecte o EV3 ao computador usando um cabo USB. Certifique-se de usar um cabo que suporte transferência de dados, não apenas carregamento.</li>
+<li>O Linux deve reconhecer o EV3 como um dispositivo de rede e criar uma nova interface de rede (geralmente algo como <code>enp0s20f0u4</code> ou <code>usb0</code>). Se isso não acontecer, verifique a seção de erros comuns no final deste documento.</li>
+<li>Com isso, já deve ser possível acessar o EV3 com o IP mostrado no canto superior esquerdo da tela do EV3.</li>
 </ol>
 <h2 id="acesso-via-ssh">Acesso via SSH</h2>
-<p>Após conectar o EV3 à rede, você pode acessar o dispositivo via SSH. O endereço IP do EV3 pode ser encontrado no menu <code>Brickman &gt; Wireless and Networks &gt; Wi-Fi &gt; Status</code>.</p>
+<p>Após conectar o EV3 à rede, você pode acessar o dispositivo via SSH. O endereço IP do EV3 pode ser encontrado no menu <code>Brickman &gt; Wireless and Networks &gt; Wi-Fi &gt; Status</code>. Ou, se a conexão já estiver estabelecida, o IP é mostrado no canto superior esquerdo da tela do EV3.</p>
 <p>Use o seguinte comando no terminal do seu computador para acessar o EV3 via SSH:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ssh<span class="w"> </span>robot@10.42.0.212
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ssh<span class="w"> </span>robot@&lt;IP_DO_EV3&gt;
 </code></pre></div>
 <p>Também é possível enviar arquivos para o EV3 usando SCP:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>scp<span class="w"> </span>&lt;ARQUIVO&gt;<span class="w"> </span>robot@10.42.0.212:/home/robot/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>scp<span class="w"> </span>&lt;ARQUIVO&gt;<span class="w"> </span>robot@&lt;IP_DO_EV3&gt;:/home/robot/
 </code></pre></div>
 <blockquote>
 <p>Para a primeira conexão, a senha padrão é <code>maker</code>. Se já está configurado provavelmente colocamos <strong>aquela</strong> senha da Rino 👀.</p>
 </blockquote>
 <h2 id="rodando-um-programa">Rodando um Programa</h2>
 <p>Para rodar um programa no EV3, você pode transferir o arquivo do programa para o EV3 via SCP e depois executá-lo via SSH. Por exemplo:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>scp<span class="w"> </span>meu_programa.py<span class="w"> </span>robot@10.42.0.212:/home/robot/
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ssh<span class="w"> </span>robot@10.42.0.212<span class="w"> </span><span class="s1">&#39;python3 /home/robot/meu_programa.py&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>scp<span class="w"> </span>meu_programa.py<span class="w"> </span>robot@&lt;IP_DO_EV3&gt;:/home/robot/
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ssh<span class="w"> </span>robot@&lt;IP_DO_EV3&gt;<span class="w"> </span><span class="s1">&#39;python3 /home/robot/meu_programa.py&#39;</span>
 </code></pre></div>
 <p>Para programas C/C++, é aconselhável compilar no computador host e transferir o binário para o EV3, garantindo que todas as dependências estejam satisfeitas:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>scp<span class="w"> </span>meu_programa<span class="w"> </span>robot@10.42.0.212:/home/robot/
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>ssh<span class="w"> </span>robot@10.42.0.212<span class="w"> </span><span class="s1">&#39;/home/robot/meu_programa&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>scp<span class="w"> </span>meu_programa<span class="w"> </span>robot@&lt;IP_DO_EV3&gt;:/home/robot/
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>ssh<span class="w"> </span>robot@&lt;IP_DO_EV3&gt;<span class="w"> </span><span class="s1">&#39;/home/robot/meu_programa&#39;</span>
 </code></pre></div>
 <p>Também é possível rodar programas pela interface do Brickman, navegando até o arquivo do programa e selecionando-o para execução.</p>
 <h2 id="erros-comuns">Erros Comuns</h2>
