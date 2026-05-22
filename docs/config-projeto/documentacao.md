@@ -92,7 +92,12 @@ O MkDocs é uma ferramenta que permite a criação de documentações estáticas
 
 ```bash
     python3 -m venv venv
+    
+    # Linux/MacOS
     source venv/bin/activate
+    # Windows
+    source venv/Scripts/activate
+
     pip install -r requirements.txt
 ```
 
