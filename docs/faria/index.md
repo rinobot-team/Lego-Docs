@@ -1,4 +1,4 @@
-# Migração para o EV3
+# Migração para o EV3 e FARIA
 
 Esta seção aborda o processo de migração do código e configuração para o robô baseado no EV3, destacando as principais diferenças e adaptações necessárias em relação ao NXT.
 
@@ -13,3 +13,11 @@ Essa documentação ainda está em desenvolvimento e ainda não cobre todos os a
 - [Motores](./motores.md).
 - [Sensores](./sensores.md).
 - [LCD](./lcd.md).
+
+## FARIA
+
+O FARIA é o framework de controle que está sendo desenvolvido para o EV3, e tem como objetivo fornecer uma interface semelhante ao que tínhamos no NXT, mas adaptada para as características do EV3 e do EV3DEV C++. Ele ainda está em desenvolvimento, mas a ideia é que ele seja uma camada de abstração sobre o EV3DEV C++, facilitando a migração do código e a implementação de novas funcionalidades como parametrização das configurações dos robôs, multithreading e melhores padrões de código.
+
+O FARIA é um projeto open-source, e a documentação está sendo construída à medida que o desenvolvimento avança. Para acompanhar o progresso do FARIA, você pode acessar o [repositório oficial no GitHub](https://github.com/rinobot-team/FARIA).
+
+Para informações sobre a proposta de arquitetura do FARIA, veja a seção [Arquitetura do FARIA](./arquitetura.md).

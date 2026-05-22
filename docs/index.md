@@ -1,6 +1,5 @@
 # Sumô Lego - Documentação 
 
-
 ## Sobre
 
 Este site tem como objetivo documentar o codebase da categoria Sumô Lego da equipe de robótica [Rinobot](https://instagram.com/rinobotbrasil). Ele está sob a licença MIT, que pode ser encontrada [aqui](https://github.com/rinobot-team/Lego-Docs/blob/main/LICENSE).  
@@ -15,10 +14,10 @@ Qualquer duvida sobre o funcionamento do codebase pode ser tirada com os membros
 
 | Tópico | Status |
 | ------ | ------ |
-| Configuração do Projeto  | Incompleto |
+| Configuração do Projeto | Incompleto |
 | Framework | Não Existe |
 | Robôs | Não Existe |
-| Migração para EV3 | Não Existe |
+| FARIA | Incompleto |
 | Workflow | Não Existe |
 
 ---
