@@ -13,10 +13,13 @@ nav:
     - Documentação: config-projeto/documentacao.md 
   - FARIA:
     - Índice: faria/index.md
-    - Motores: faria/motores.md
-    - Sensores: faria/sensores.md
-    - LCD: faria/lcd.md
     - Arquitetura: faria/arquitetura.md
+    - Ferramental e Ambiente de Desenvolvimento: faria/ferramental.md
+    - Arquitetura de Núcleo e Engine: faria/engine.md
+    - Camada de Abstração de Hardware: faria/hal.md
+    - Configuração dos Robôs: faria/config.md
+    - Estratégias: faria/estrategias.md
+    - LCD (WIP): faria/lcd.md
 theme:
   name: material
   logo: img/favicon.png

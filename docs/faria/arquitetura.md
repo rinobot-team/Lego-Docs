@@ -235,6 +235,8 @@ Usaremos scripts Python para automatizar o processo:
 - Compilação: Chamar o `arm-linux-gnueabi-g++` (ou o cross-compiler da ev3dev) com os flags necessários. O script pode montar uma árvore de build, copiar bibliotecas estáticas, etc.
 - Upload: Usar `scp` para copiar o binário para o EV3 via USB (atualmente com IP dinâmico) ou via Bluetooth (usando rfcomm talvez). O script pode também reiniciar o robô remotamente via ssh.
 
+Uma documentação mais detalhada sobre o ferramental está presente na seção [Ferramental e Ambiente de Desenvolvimento](./ferramental.md).
+
 Exemplo de `build.py`:
 
 ```python
