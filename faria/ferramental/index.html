@@ -975,6 +975,9 @@
 <p>Para evitar a situação de "funciona na minha máquina", o ecossistema de desenvolvimento foi ancorado em <strong>Linux</strong>, por ser o sistema operacional superior, de pessoas com caráter.</p>
 <p><strong>O Problema do Windows:</strong> Sistemas Windows utilizam quebras de linha diferentes (<code>CRLF</code> em vez de <code>LF</code>) e possuem sistemas de arquivos <em>case-insensitive</em> (onde <code>Motor.hpp</code> e <code>motor.hpp</code> são tratados como iguais). Isso frequentemente causa quebras silenciosas ou falhas de compilação quando o código é enviado para o Linux embarcado do EV3.</p>
 <p><strong>A Solução (WSL):</strong> Desenvolvedores no Windows devem utilizar o <a href="https://docs.microsoft.com/pt-br/windows/wsl/">WSL</a>. Os scripts em Python do framework foram projetados para detectar o ambiente e realizar a tradução de caminhos de forma transparente (ex: convertendo <code>C:\Users\...</code> para <code>/mnt/c/Users/...</code> antes de invocar o compilador).</p>
+<blockquote>
+<p>Para instalar e configurar o WSL, siga as instruções em <a href="../../config-projeto/setup-ev3/">Setup do EV3</a>.</p>
+</blockquote>
 <h2 id="cross-compilation-estatica-hermetica-falei-bonito-ne">Cross-Compilation Estática Hermética (Falei bonito né?)</h2>
 <p>O EV3 roda em um processador ARM9 (ARM926EJ-S) e utiliza uma imagem Linux baseada no Debian antigo, o que significa que suas bibliotecas dinâmicas do sistema (como a <code>glibc</code> e a <code>libstdc++</code>) estão defasadas.</p>
 <p>Para contornar essa limitação e usar C++ moderno (C++17) com segurança, aplicamos o conceito de <strong>Cross-Compilation Estática</strong>:</p>

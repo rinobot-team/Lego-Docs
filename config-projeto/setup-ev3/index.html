@@ -650,6 +650,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#instalacao-e-configuracao-do-wsl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalação e Configuração do WSL
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instalação e Configuração do WSL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instalacao-do-wsl-e-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalação do WSL e Dependências
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1149,6 +1177,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#instalacao-e-configuracao-do-wsl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalação e Configuração do WSL
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instalação e Configuração do WSL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instalacao-do-wsl-e-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalação do WSL e Dependências
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1232,11 +1288,11 @@
 <h2 id="rodando-um-programa">Rodando um Programa</h2>
 <p>Para rodar um programa no EV3, você pode transferir o arquivo do programa para o EV3 via SCP e depois executá-lo via SSH. Por exemplo:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>scp<span class="w"> </span>meu_programa.py<span class="w"> </span>robot@&lt;IP_DO_EV3&gt;:/home/robot/
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ssh<span class="w"> </span>robot@&lt;IP_DO_EV3&gt;<span class="w"> </span><span class="s1">&#39;python3 /home/robot/meu_programa.py&#39;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ssh<span class="w"> </span>robot@&lt;IP_DO_EV3&gt;<span class="w"> </span><span class="s1">'python3 /home/robot/meu_programa.py'</span>
 </code></pre></div>
 <p>Para programas C/C++, é aconselhável compilar no computador host e transferir o binário para o EV3, garantindo que todas as dependências estejam satisfeitas:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>scp<span class="w"> </span>meu_programa<span class="w"> </span>robot@&lt;IP_DO_EV3&gt;:/home/robot/
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>ssh<span class="w"> </span>robot@&lt;IP_DO_EV3&gt;<span class="w"> </span><span class="s1">&#39;/home/robot/meu_programa&#39;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>ssh<span class="w"> </span>robot@&lt;IP_DO_EV3&gt;<span class="w"> </span><span class="s1">'/home/robot/meu_programa'</span>
 </code></pre></div>
 <p>Também é possível rodar programas pela interface do Brickman, navegando até o arquivo do programa e selecionando-o para execução.</p>
 <h2 id="erros-comuns">Erros Comuns</h2>
@@ -1257,15 +1313,38 @@
 <p>Você verá interfaces comuns como <code>lo</code>, <code>eno1</code> (cabo) ou <code>wlan0</code> (wi-fi). Procure por uma interface adicional que geralmente começa com <code>enp</code> seguido de <code>u</code> (ex: <code>enp0s20f0u4</code>) ou <code>usb0</code>. Anote este nome.</p>
 <p>Depois rode:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">#Criar perfil da rede: </span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>nmcli<span class="w"> </span>connection<span class="w"> </span>add<span class="w"> </span><span class="nb">type</span><span class="w"> </span>ethernet<span class="w"> </span>ifname<span class="w"> </span>&lt;Nome_da_Interface&gt;<span class="w"> </span>con-name<span class="w"> </span><span class="s2">&quot;EV3_USB&quot;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>nmcli<span class="w"> </span>connection<span class="w"> </span>add<span class="w"> </span><span class="nb">type</span><span class="w"> </span>ethernet<span class="w"> </span>ifname<span class="w"> </span>&lt;Nome_da_Interface&gt;<span class="w"> </span>con-name<span class="w"> </span><span class="s2">"EV3_USB"</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Mudar o IPv4 para compartilhado: </span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>nmcli<span class="w"> </span>connection<span class="w"> </span>modify<span class="w"> </span><span class="s2">&quot;EV3_USB&quot;</span><span class="w"> </span>ipv4.method<span class="w"> </span>shared
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>nmcli<span class="w"> </span>connection<span class="w"> </span>modify<span class="w"> </span><span class="s2">"EV3_USB"</span><span class="w"> </span>ipv4.method<span class="w"> </span>shared
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Subir a interface: </span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>nmcli<span class="w"> </span>connection<span class="w"> </span>up<span class="w"> </span><span class="s2">&quot;EV3_USB&quot;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>nmcli<span class="w"> </span>connection<span class="w"> </span>up<span class="w"> </span><span class="s2">"EV3_USB"</span>
 </code></pre></div>
 <p>Isto deve funcionar para a maioria dos Linux atuais (Foi testado só no EndeavourOS).</p>
+<h2 id="instalacao-e-configuracao-do-wsl">Instalação e Configuração do WSL</h2>
+<p>Como a ferramenta de cross-compilação do FARIA é nativa para Linux, o desenvolvimento no Windows 11 exige a utilização do <strong>WSL 2</strong> (Windows Subsystem for Linux). O WSL 2 roda um <em>kernel</em> Linux real dentro de uma máquina virtual ultraleve.</p>
+<h3 id="instalacao-do-wsl-e-dependencias">Instalação do WSL e Dependências</h3>
+<p>A instalação é bem tranquila: </p>
+<ol>
+<li><strong>Ativando o WSL:</strong> Abra o <code>PowerShell</code> ou o <code>Windows Terminal</code> <strong>como Administrador</strong> e execute o comando abaixo. Ele fará o download do kernel Linux e instalará a distribuição Ubuntu por padrão.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">wsl</span> <span class="p">-</span><span class="n">-install</span>
+</code></pre></div>
+<ol>
+<li><strong>Primeiro Acesso:</strong> Ao abrir o terminal do Ubuntu pela primeira vez, você será solicitado a criar um usuário e senha (esta senha será usada para os comandos <code>sudo</code>).</li>
+<li><strong>Preparando o Ambiente:</strong> Dentro do terminal do Linux, atualize a lista de pacotes e instale os interpretadores e bibliotecas de comunicação necessários para o nosso deployer:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3<span class="w"> </span>python3-pip<span class="w"> </span>curl<span class="w"> </span>tar<span class="w"> </span>openssh-client<span class="w"> </span>-y
+</code></pre></div>
+<ol>
+<li><strong>Inicializando o Toolchain:</strong> Navegue até a pasta do projeto FARIA (o WSL mapeia o seu disco C: em /mnt/c/, logo você pode acessar algo como cd /mnt/c/Users/SeuUsuario/Rino/FARIA) e rode o setup inicial:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">cd</span><span class="w"> </span>/mnt/c/Users/SeuUsuario/Rino/FARIA
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>./deployer.py<span class="w"> </span>setup
+</code></pre></div>
+<p>Isso já é o suficiente para começar a desenvolver e deployar aplicações no EV3 usando o FARIA. Em caso de problemas, manda no GPT que ele resolve.</p>
 
 
 
