@@ -14,14 +14,14 @@
         <link rel="prev" href="../config-projeto/documentacao/">
       
       
-        <link rel="next" href="motores/">
+        <link rel="next" href="arquitetura/">
       
       
         
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -518,6 +518,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -574,14 +580,14 @@
   
   
     <li class="md-nav__item">
-      <a href="motores/" class="md-nav__link">
+      <a href="arquitetura/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Motores
+    Arquitetura
   
 
     
@@ -602,14 +608,126 @@
   
   
     <li class="md-nav__item">
-      <a href="sensores/" class="md-nav__link">
+      <a href="ferramental/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Sensores
+    Ferramental e Ambiente de Desenvolvimento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura de Núcleo e Engine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="hal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Camada de Abstração de Hardware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuração dos Robôs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="estrategias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estratégias
   
 
     
@@ -637,35 +755,7 @@
   <span class="md-ellipsis">
     
   
-    LCD
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="arquitetura/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Arquitetura
+    LCD (WIP)
   
 
     
@@ -751,16 +841,20 @@
 <li>O SDK para o EV3 é diferente do NXT, então você precisará adaptar seu código para usar as bibliotecas e APIs específicas do EV3. Enquanto o NXT usa uma API procedural baseada em C, o EV3 é 100% baseado em C++11 e orientado a objetos.</li>
 <li>O RobotC roda como um firmware no NXT, enquanto o EV3DEV C++ roda como um programa de usuário no EV3, que possui um sistema operacional Linux completo (baseado em Debian). Isso afeta como a interação com o hardware e o sistema é realizada: O hardware é exposto como arquivos na pasta <code>/sys/class</code>, e a comunicação com sensores e atuadores é feita através da leitura e escrita nesses arquivos.</li>
 </ul>
-<p>Essa documentação ainda está em desenvolvimento e ainda não cobre todos os aspectos da migração, até o momento há essas interfaces:</p>
-<ul>
-<li><a href="motores/">Motores</a>.</li>
-<li><a href="sensores/">Sensores</a>.</li>
-<li><a href="lcd/">LCD</a>.</li>
-</ul>
 <h2 id="faria">FARIA</h2>
 <p>O FARIA é o framework de controle que está sendo desenvolvido para o EV3, e tem como objetivo fornecer uma interface semelhante ao que tínhamos no NXT, mas adaptada para as características do EV3 e do EV3DEV C++. Ele ainda está em desenvolvimento, mas a ideia é que ele seja uma camada de abstração sobre o EV3DEV C++, facilitando a migração do código e a implementação de novas funcionalidades como parametrização das configurações dos robôs, multithreading e melhores padrões de código.</p>
 <p>O FARIA é um projeto open-source, e a documentação está sendo construída à medida que o desenvolvimento avança. Para acompanhar o progresso do FARIA, você pode acessar o <a href="https://github.com/rinobot-team/FARIA">repositório oficial no GitHub</a>.</p>
-<p>Para informações sobre a proposta de arquitetura do FARIA, veja a seção <a href="arquitetura/">Arquitetura do FARIA</a>.</p>
+<p>Para informações sobre a proposta de arquitetura do FARIA, veja a seção <a href="arquitetura/">Arquitetura do FARIA</a>. Ela é uma visão geral da estrutura do framework, mais detalhes sobre cada módulo podem ser encontrados nas respectivas seções.</p>
+<p>Essa documentação ainda está em desenvolvimento e ainda não cobre todos os aspectos da migração, até o momento há esses documentos:</p>
+<ul>
+<li><a href="arquitetura/">Visão Geral do FARIA</a>.</li>
+<li><a href="ferramental/">Ferramental e Ambiente de Desenvolvimento</a>.</li>
+<li><a href="engine/">Arquitetura de Núcleo e Engine</a>.</li>
+<li><a href="hal/">Camada de Abstração de Hardware (HAL)</a>.</li>
+<li><a href="config/">Configuração dos Robôs</a>.</li>
+<li><a href="estrategias/">Estratégias</a>.</li>
+<li><a href="lcd/">LCD</a>.</li>
+</ul>
 
 
 
@@ -815,7 +909,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.annotate", "content.tabs.link", "navigation.indexes", "navigation.tracking"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

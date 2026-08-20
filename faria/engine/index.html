@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://rinobot-team.github.io/Lego-Docs/faria/sensores/">
+        <link rel="canonical" href="https://rinobot-team.github.io/Lego-Docs/faria/engine/">
       
       
-        <link rel="prev" href="../motores/">
+        <link rel="prev" href="../ferramental/">
       
       
-        <link rel="next" href="../lcd/">
+        <link rel="next" href="../hal/">
       
       
         
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Sensores - Sumô Lego - Documentação</title>
+        <title>Arquitetura de Núcleo e Engine - Sumô Lego - Documentação</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#migracao-dos-sensores" class="md-skip">
+        <a href="#arquitetura-de-nucleo-e-engine" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Sensores
+              Arquitetura de Núcleo e Engine
             
           </span>
         </div>
@@ -518,6 +518,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -574,14 +580,42 @@
   
   
     <li class="md-nav__item">
-      <a href="../motores/" class="md-nav__link">
+      <a href="../arquitetura/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Motores
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ferramental/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ferramental e Ambiente de Desenvolvimento
   
 
     
@@ -618,7 +652,7 @@
   <span class="md-ellipsis">
     
   
-    Sensores
+    Arquitetura de Núcleo e Engine
   
 
     
@@ -636,7 +670,7 @@
   <span class="md-ellipsis">
     
   
-    Sensores
+    Arquitetura de Núcleo e Engine
   
 
     
@@ -662,55 +696,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#diferencas-principais" class="md-nav__link">
+  <a href="#o-padrao-blackboard" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Diferenças Principais
+        O Padrão Blackboard
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tabela-de-equivalencias" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tabela de Equivalências
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exemplo-de-codigo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exemplo de Código
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Exemplo de Código">
+    <nav class="md-nav" aria-label="O Padrão Blackboard">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#nxt-robotc" class="md-nav__link">
+  <a href="#detalhes-para-nerds" class="md-nav__link">
     <span class="md-ellipsis">
       
-        NXT (RobotC)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#equivalente-ev3-ev3dev-c" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Equivalente EV3 (EV3DEV C++)
+        Detalhes para Nerds
       
     </span>
   </a>
@@ -719,6 +720,28 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multithreading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multithreading
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gestao-de-ciclo-de-vida-e-seguranca-raii" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gestão de Ciclo de Vida e Segurança (RAII)
+      
+    </span>
+  </a>
   
 </li>
       
@@ -738,14 +761,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../lcd/" class="md-nav__link">
+      <a href="../hal/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    LCD
+    Camada de Abstração de Hardware
   
 
     
@@ -766,14 +789,70 @@
   
   
     <li class="md-nav__item">
-      <a href="../arquitetura/" class="md-nav__link">
+      <a href="../config/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Arquitetura
+    Configuração dos Robôs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../estrategias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estratégias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lcd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LCD (WIP)
   
 
     
@@ -821,55 +900,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#diferencas-principais" class="md-nav__link">
+  <a href="#o-padrao-blackboard" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Diferenças Principais
+        O Padrão Blackboard
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tabela-de-equivalencias" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tabela de Equivalências
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exemplo-de-codigo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exemplo de Código
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Exemplo de Código">
+    <nav class="md-nav" aria-label="O Padrão Blackboard">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#nxt-robotc" class="md-nav__link">
+  <a href="#detalhes-para-nerds" class="md-nav__link">
     <span class="md-ellipsis">
       
-        NXT (RobotC)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#equivalente-ev3-ev3dev-c" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Equivalente EV3 (EV3DEV C++)
+        Detalhes para Nerds
       
     </span>
   </a>
@@ -878,6 +924,28 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multithreading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multithreading
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gestao-de-ciclo-de-vida-e-seguranca-raii" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gestão de Ciclo de Vida e Segurança (RAII)
+      
+    </span>
+  </a>
   
 </li>
       
@@ -901,68 +969,35 @@
   
 
 
-<h1 id="migracao-dos-sensores">Migração dos Sensores</h1>
-<h2 id="diferencas-principais">Diferenças Principais</h2>
-<p>Assim como os motores, os sensores no NXT são acessados diretamente através de arrays pré-definidos, como <code>SensorValue[]</code>, onde cada índice corresponde a uma porta específica do sensor. Por exemplo, <code>SensorValue[S1]</code> acessa o sensor conectado à porta 1.</p>
-<p>No EV3, os sensores são representados como objetos de classes específicas, como <code>ev3dev::sensor::color_sensor</code> ou <code>ev3dev::sensor::ultrasonic_sensor</code>. Cada sensor é instanciado com base na porta à qual está conectado, utilizando a nomenclatura do sistema de arquivos do Linux. A leitura dos valores dos sensores é feita através de métodos específicos dessas classes.</p>
-<h2 id="tabela-de-equivalencias">Tabela de Equivalências</h2>
-<table>
-<thead>
-<tr>
-<th>Ação</th>
-<th>NXT</th>
-<th>EV3</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Ler Valor do Sensor Ultrassônico</td>
-<td><code>SensorType[S2] = sensorSONAR; int dist = SensorValue[S2]; // Em cm</code></td>
-<td><code>ultrasonic_sensor us(INPUT_2); int dist = us.distance_centimeters();</code></td>
-</tr>
-<tr>
-<td>Ler Valor do Sensor de Cor</td>
-<td><code>SensorType[S3] = sensorCOLORFULL; int color = SensorValue[S3];</code></td>
-<td><code>color_sensor cs(INPUT_3); int color = cs.color();</code></td>
-</tr>
-<tr>
-<td>Configurar Sensor de Toque</td>
-<td><code>SensorType[S1] = sensorEV3_TOUCH;</code></td>
-<td><code>touch_sensor ts(INPUT_1);</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="exemplo-de-codigo">Exemplo de Código</h2>
-<h3 id="nxt-robotc">NXT (RobotC)</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">task</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="n">SensorType</span><span class="p">[</span><span class="n">S1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensorTouch</span><span class="p">;</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="n">SensorValue</span><span class="p">[</span><span class="n">S1</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="p">{</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="c1">// Espera</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="c1">// Pressionado</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">}</span>
-</code></pre></div>
-<h3 id="equivalente-ev3-ev3dev-c">Equivalente EV3 (EV3DEV C++)</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ev3dev.h&quot;</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">ev3dev</span><span class="p">;</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">{</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="c1">// 1. Instanciar o sensor de toque na porta 1</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="n">touch_sensor</span><span class="w"> </span><span class="n">ts</span><span class="p">(</span><span class="n">INPUT_1</span><span class="p">);</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="c1">// 2. Esperar em um loop enquanto não estiver pressionado</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="n">ts</span><span class="p">.</span><span class="n">is_pressed</span><span class="p">()</span><span class="w"> </span><span class="p">)</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="p">{</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="c1">// É uma boa prática esperar um pouco em loops</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">sleep_for</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">  </span><span class="c1">// Pressionado</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="p">}</span>
-</code></pre></div>
+<h1 id="arquitetura-de-nucleo-e-engine">Arquitetura de Núcleo e Engine</h1>
+<p>A Engine é o núcleo (a galera mais nerd chama de <em>kernel</em>) do FARIA. A sua função é orquestrar as threads de execução, gerenciar a comunicação com os sensores e atuadores, e fornecer uma interface de alto nível para o desenvolvimento das estratégias.</p>
+<h2 id="o-padrao-blackboard">O Padrão Blackboard</h2>
+<p>Em vez de permitir que a lógica de controle (Estratégia) acesse diretamente os sensores e motores, implementamos o padrão arquitetural Blackboard. Trata-se de um espaço de memória central e thread-safe onde os dados do mundo físico são depositados e consumidos.</p>
+<p>Imagine que duas pessoas precisam trabalhar no mesmo projeto, mas não podem se comunicar diretamente. Uma solução é criar um quadro-negro (blackboard) onde ambas podem escrever seus estados atuais. É isso que as threads do FARIA usam.</p>
+<h3 id="detalhes-para-nerds">Detalhes para Nerds</h3>
+<p><strong>Complexidade:</strong> O armazenamento interno utiliza <code>std::unordered_map</code>, mapeando chaves de texto (os aliases definidos no JSON, como "motorEsquerdo") para valores inteiros. Isso garante que a busca por dados seja feita em tempo constante, <code>O(1)</code>.</p>
+<p><strong>Concorrência Segura:</strong> Todo acesso ao Blackboard (leitura ou escrita) é protegido por um <code>std::mutex</code> operando em conjunto com <code>std::lock_guard</code>. Para explicar melhor, voltando ao exemplo das duas pessoas: Pode ser que ambas escrevam ao mesmo tempo, resultando numa informação corrompida. O que o mutex o lock guard fazem é garantir que isso não ocorra. É como se só tivesse uma caneta, e as duas pessoas tem de revezar ela, garantindo que nunca haja escrita simultânea. Na computação chamamos esse erro de <em>condição de corrida</em>.</p>
+<blockquote>
+<p><em>Nota para evitar retrabalho:</em> Originalmente, consideramos o uso de <code>std::shared_mutex</code> (Readers-Writer Lock) para otimizar múltiplas leituras simultâneas. Mas, devido a um bug conhecido na implementação de variáveis de condição estáticas no compilador GCC 7.3.0 (__concurrence_broadcast_error), deu muita merda.</p>
+</blockquote>
+<p><strong>Prevenção de Falhas:</strong> Os métodos de leitura (como <code>getSensorValue</code>) não retornam tipos primitivos brutos. Eles retornam um <code>std::optional&lt;int&gt;</code>. Se uma estratégia tentar ler um sensor chamado "cor1", mas o cabo estiver desconectado ou o nome no JSON estiver errado, o Blackboard retorna <code>std::nullopt</code> em vez de um falso 0. Isso permite que a estratégia trate a falha graciosamente em vez de tomar decisões baseadas em dados fantasmas.</p>
+<h2 id="multithreading">Multithreading</h2>
+<p>A classe <code>Robot</code> divide o fluxo de execução do hardware em duas threads concorrentes e isoladas. Isso garante que o robô seja reativo e que chamadas de hardware lentas não congelem a tomada de decisão.</p>
+<p>O que são threads? São linhas de execução independentes que podem rodar em paralelo (ao mesmo tempo). No caso do FARIA, temos:</p>
+<ul>
+<li><strong>Thread de Percepção (Read-Only do Mundo Real):</strong> Seu único trabalho é iterar infinitamente sobre a lista de sensores e os encoders dos motores. Ela puxa os dados físicos via HAL (Hardware Abstraction Layer) e escreve os valores atualizados no Blackboard.</li>
+<li><strong>Thread de Ação (Write-Only para o Mundo Real):</strong> Esta thread é o motor de execução. A cada ciclo, ela lê o estado atualizado do Blackboard, injeta esse estado na Estratégia ativa (que roda sua matemática de controle) e coleta as respostas de velocidade. Em seguida, ela varre o Blackboard pegando as novas velocidades e envia os comandos reais de potência para os motores.</li>
+</ul>
+<h2 id="gestao-de-ciclo-de-vida-e-seguranca-raii">Gestão de Ciclo de Vida e Segurança (RAII)</h2>
+<p>Na robótica, um bug no código pode resultar em um robô desgovernado fisicamente. A classe <code>Robot</code> aplica o idioma C++ RAII (Resource Acquisition Is Initialization).</p>
+<blockquote>
+<p><strong>Nota do Chaves</strong>: Recomendo muito o livro <a href="https://www.amazon.com.br/moderno-eficaz-formas-específicas-aprimorar/dp/8550800031">C++ Moderno e Eficaz</a> do Scott Meyers. Ele explica muito bem conceitos atuais de C++ como RAII, smart pointers, move semantics, etc.</p>
+</blockquote>
+<p>Algumas das garantias que o RAII nos dá:</p>
+<ul>
+<li><strong>Atomicidade:</strong> O estado de execução do robô é mantido em uma variável <code>std::atomic&lt;bool&gt; m_running</code>. Ela garante que comandos de start ou stop, seja via teclado, rede ou interface gráfica, alterem o estado instantaneamente e de forma segura entre as threads.</li>
+<li><strong>Destruição Segura:</strong> Quando o programa é encerrado (ou abortado), o destrutor <code>~Robot()</code> é invocado. Ele chama o método <code>stop()</code>, sinalizando as flags atômicas para falso e aplicando <code>join()</code> nas threads de percepção e ação. Isso garante que o programa só devolva o controle ao sistema operacional depois que o loop de ação tiver finalizado sua iteração atual e cortado a energia dos motores. Evitando que o robô continue andando desgovernado após o programa encerrar.</li>
+</ul>
 
 
 
@@ -1017,7 +1052,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.annotate", "content.tabs.link", "navigation.indexes", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
