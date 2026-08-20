@@ -124,3 +124,34 @@ nmcli connection up "EV3_USB"
 ```
 
 Isto deve funcionar para a maioria dos Linux atuais (Foi testado só no EndeavourOS).
+
+## Instalação e Configuração do WSL
+
+Como a ferramenta de cross-compilação do FARIA é nativa para Linux, o desenvolvimento no Windows 11 exige a utilização do **WSL 2** (Windows Subsystem for Linux). O WSL 2 roda um *kernel* Linux real dentro de uma máquina virtual ultraleve.
+
+### Instalação do WSL e Dependências
+
+A instalação é bem tranquila: 
+
+1. **Ativando o WSL:** Abra o `PowerShell` ou o `Windows Terminal` **como Administrador** e execute o comando abaixo. Ele fará o download do kernel Linux e instalará a distribuição Ubuntu por padrão.
+
+   ```powershell
+   wsl --install
+   ```
+
+2. **Primeiro Acesso:** Ao abrir o terminal do Ubuntu pela primeira vez, você será solicitado a criar um usuário e senha (esta senha será usada para os comandos `sudo`).
+3. **Preparando o Ambiente:** Dentro do terminal do Linux, atualize a lista de pacotes e instale os interpretadores e bibliotecas de comunicação necessários para o nosso deployer:
+
+```bash
+sudo apt update && sudo apt upgrade -y
+sudo apt install python3 python3-pip curl tar openssh-client -y
+```
+
+4. **Inicializando o Toolchain:** Navegue até a pasta do projeto FARIA (o WSL mapeia o seu disco C: em /mnt/c/, logo você pode acessar algo como cd /mnt/c/Users/SeuUsuario/Rino/FARIA) e rode o setup inicial:
+
+```bash
+cd /mnt/c/Users/SeuUsuario/Rino/FARIA
+./deployer.py setup
+```
+
+Isso já é o suficiente para começar a desenvolver e deployar aplicações no EV3 usando o FARIA. Em caso de problemas, manda no GPT que ele resolve.

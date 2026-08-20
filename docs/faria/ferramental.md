@@ -10,6 +10,8 @@ Para evitar a situação de "funciona na minha máquina", o ecossistema de desen
 
 **A Solução (WSL):** Desenvolvedores no Windows devem utilizar o [WSL](https://docs.microsoft.com/pt-br/windows/wsl/). Os scripts em Python do framework foram projetados para detectar o ambiente e realizar a tradução de caminhos de forma transparente (ex: convertendo `C:\Users\...` para `/mnt/c/Users/...` antes de invocar o compilador).
 
+> Para instalar e configurar o WSL, siga as instruções em [Setup do EV3](../config-projeto/setup-ev3.md).
+
 ## Cross-Compilation Estática Hermética (Falei bonito né?)
 
 O EV3 roda em um processador ARM9 (ARM926EJ-S) e utiliza uma imagem Linux baseada no Debian antigo, o que significa que suas bibliotecas dinâmicas do sistema (como a `glibc` e a `libstdc++`) estão defasadas.
