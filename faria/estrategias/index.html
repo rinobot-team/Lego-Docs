@@ -823,6 +823,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#strategy-composite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategy Composite
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -846,7 +857,7 @@
   <span class="md-ellipsis">
     
   
-    LCD (WIP)
+    LCD e UI
   
 
     
@@ -931,6 +942,17 @@
     <span class="md-ellipsis">
       
         O Strategy Registry
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strategy-composite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategy Composite
       
     </span>
   </a>
@@ -1041,9 +1063,29 @@
 <a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">chosenStrategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"EvitaObstaculo"</span><span class="p">;</span>
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="n">robot</span><span class="p">.</span><span class="n">setStrategy</span><span class="p">(</span><span class="n">registry</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="n">chosenStrategy</span><span class="p">));</span>
 </code></pre></div>
+<h2 id="strategy-composite">Strategy Composite</h2>
+<p>É uma exigência tática comum que o robô execute uma manobra de abertura nos primeiros milissegundos da luta (Estratégia Inicial) e, em seguida, mude para a sua rotina de batalha principal.</p>
+<p>A classe <code>DualStrategy</code> atua como um wrapper. Ela assina o mesmo contrato da classe base <code>Strategy</code>, o que a torna invisível para a Engine do robô. Seu único papel é encapsular dois ponteiros de estratégia distintos e transferir o controle do Blackboard da estratégia inicial para a principal após um tempo predeterminado de execução.</p>
 <blockquote>
-<p><strong>Importante:</strong> Essa última parte da estratégia será mudada em breve, com a implementação da interface gráfica de seleção de estratégias, que permitirá ao usuário escolher a estratégia desejada sem precisar recompilar o código.</p>
+<p>Por padrão esse tempo é de <strong>2000 ms</strong>.</p>
 </blockquote>
+<p>Em vez de sobrecarregar o <code>StrategyRegistry</code> com o registro de todas as combinações possíveis de estratégias iniciais e principais, a montagem da <code>DualStrategy</code> deve ser feita sob demanda de forma declarativa, por exemplo:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">cfg</span><span class="p">.</span><span class="n">initialStrategy</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="c1">// Caso uma manobra inicial tenha sido selecionada na interface, </span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="c1">// a DualStrategy envelopa as duas lógicas.</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">finalStrategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">DualStrategy</span><span class="o">&gt;</span><span class="p">(</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="s">"EstrategiaMuitoFoda"</span><span class="p">,</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="n">registry</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="n">cfg</span><span class="p">.</span><span class="n">initialStrategy</span><span class="p">),</span><span class="w"> </span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="n">registry</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="n">cfg</span><span class="p">.</span><span class="n">mainStrategy</span><span class="p">),</span><span class="w">    </span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="mi">2000</span><span class="w">                                  </span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="p">);</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="c1">// Caso a abertura seja dispensada, a principal assume com zero overhead.</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="n">finalStrategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">registry</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="n">cfg</span><span class="p">.</span><span class="n">mainStrategy</span><span class="p">);</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="p">}</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="n">robot</span><span class="p">.</span><span class="n">setStrategy</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">finalStrategy</span><span class="p">));</span>
+</code></pre></div>
 
 
 

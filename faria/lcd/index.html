@@ -23,7 +23,7 @@
     
     
       
-        <title>LCD (WIP) - Sumô Lego - Documentação</title>
+        <title>LCD e UI - Sumô Lego - Documentação</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#migracao-do-lcd" class="md-skip">
+        <a href="#arquitetura-e-design-da-interface-de-usuario-tui" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              LCD (WIP)
+              LCD e UI
             
           </span>
         </div>
@@ -762,7 +762,7 @@
   <span class="md-ellipsis">
     
   
-    LCD (WIP)
+    LCD e UI
   
 
     
@@ -780,7 +780,7 @@
   <span class="md-ellipsis">
     
   
-    LCD (WIP)
+    LCD e UI
   
 
     
@@ -806,44 +806,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#diferencas-principais" class="md-nav__link">
+  <a href="#restricoes-de-hardware" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Diferenças Principais
+        Restrições de Hardware
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#printar-no-serial-padrao" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Printar no Serial Padrão
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#framebuffer-no-ev3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Framebuffer no EV3
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Framebuffer no EV3">
+    <nav class="md-nav" aria-label="Restrições de Hardware">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#o-que-e-o-framebuffer" class="md-nav__link">
+  <a href="#ajuste-de-kernel" class="md-nav__link">
     <span class="md-ellipsis">
       
-        O Que é o Framebuffer?
+        Ajuste de Kernel
       
     </span>
   </a>
@@ -851,10 +829,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#como-usar-o-framebuffer" class="md-nav__link">
+  <a href="#grid" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Como Usar o Framebuffer
+        Grid
       
     </span>
   </a>
@@ -863,6 +841,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#renderizacao-e-ansi-escape-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Renderização e ANSI Escape Codes
+      
+    </span>
+  </a>
   
 </li>
       
@@ -909,44 +898,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#diferencas-principais" class="md-nav__link">
+  <a href="#restricoes-de-hardware" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Diferenças Principais
+        Restrições de Hardware
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#printar-no-serial-padrao" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Printar no Serial Padrão
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#framebuffer-no-ev3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Framebuffer no EV3
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Framebuffer no EV3">
+    <nav class="md-nav" aria-label="Restrições de Hardware">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#o-que-e-o-framebuffer" class="md-nav__link">
+  <a href="#ajuste-de-kernel" class="md-nav__link">
     <span class="md-ellipsis">
       
-        O Que é o Framebuffer?
+        Ajuste de Kernel
       
     </span>
   </a>
@@ -954,10 +921,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#como-usar-o-framebuffer" class="md-nav__link">
+  <a href="#grid" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Como Usar o Framebuffer
+        Grid
       
     </span>
   </a>
@@ -966,6 +933,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#renderizacao-e-ansi-escape-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Renderização e ANSI Escape Codes
+      
+    </span>
+  </a>
   
 </li>
       
@@ -989,117 +967,25 @@
   
 
 
-<h1 id="migracao-do-lcd">Migração do LCD</h1>
-<p>Esta seção aborda a migração do código relacionado ao LCD do NXT para o EV3.</p>
-<h2 id="diferencas-principais">Diferenças Principais</h2>
-<p>No RobotC, o LCD do NXT é acessado através de funções específicas, como <code>nxtDisplayString()</code> para exibir texto e <code>nxtDrawLine()</code> para desenhar linhas. Essas funções são diretas e utilizam coordenadas simples para posicionamento.</p>
-<p>No EV3 temos duas opções, printar na tela pelo serial padrão, ou modificar o LCD. O LCD  é manipulado através de um framebuffer, que é uma representação em memória da tela.</p>
-<h2 id="printar-no-serial-padrao">Printar no Serial Padrão</h2>
-<p>No EV3, você pode usar a saída padrão para imprimir texto na tela do LCD. Isso é feito utilizando as funções padrão de C++ como <code>std::cout</code>. Aqui está um exemplo simples:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"ev3dev.h"</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">ev3dev</span><span class="p">;</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Hello, EV3!"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
-</code></pre></div>
-<p>Essa maneira é mais simples e recomendada para a maioria dos casos, especialmente para depuração e mensagens simples.</p>
-<h2 id="framebuffer-no-ev3">Framebuffer no EV3</h2>
-<p>O framebuffer é a camada abaixo disso. É o método de mais baixo nível (sem ser o driver do kernel) que o Linux usa para desenhar na tela.</p>
-<p>É uma abordagem mais complexa, mas oferece controle total sobre cada pixel na tela.</p>
-<h3 id="o-que-e-o-framebuffer">O Que é o Framebuffer?</h3>
-<p>Pense no framebuffer como um grande <em>mapa de bits</em> (bitmap) na RAM que representa diretamente cada pixel da tela.</p>
+<h1 id="arquitetura-e-design-da-interface-de-usuario-tui">Arquitetura e Design da Interface de Usuário (TUI)</h1>
+<p>A interface de usuário do FARIA foi projetada sob o paradigma de <strong>Text User Interface (TUI)</strong>, operando diretamente no terminal físico (TTY0) do EV3. Tentei fazer uma UX parecida com a do NXT, acho que está bem funcional.</p>
+<p>Tudo está definido em <code>include/UI.hpp</code> e só deve ser chamado em <code>main.cpp</code>.</p>
+<h2 id="restricoes-de-hardware">Restrições de Hardware</h2>
+<p>O EV3 possui um display LCD monocromático passivo com resolução de <strong>178x128 pixels</strong>.</p>
+<h3 id="ajuste-de-kernel">Ajuste de Kernel</h3>
+<p>O console do Linux nativamente tenta utilizar uma fonte microscópica (4x6) para maximizar o terminal. Para garantir a legibilidade em ambiente de competição, a classe UI injeta um comando de sistema (<code>setfont Lat15-Terminus14 -C /dev/tty0</code>) no momento de sua instanciação quue aumenta a fonte.</p>
+<h3 id="grid">Grid</h3>
+<p>O uso da fonte Terminus restringe o terminal a uma matriz rígida de aproximadamente 22 colunas por 8 linhas. O layout foi matematicamente projetado para não exceder esse limite de 22 caracteres por linha, evitando quebras de linha indesejadas (line-wrap) que quebrariam a interface.</p>
+<h2 id="renderizacao-e-ansi-escape-codes">Renderização e ANSI Escape Codes</h2>
+<p>A TUI não utiliza nenhuma bilbioteca gráfica. Toda a renderização é feita via manipulação direta do fluxo de saída padrão (<code>std::cout</code>) utilizando sequências de escape ANSI. O autor original foi idiota o suficiente pra fazer isso do zero!</p>
 <ul>
-<li>É um buffer (um pedaço de memória) contínuo.</li>
-<li>Cada célula nesse buffer corresponde a um pixel (ou um conjunto de pixels).</li>
-<li>O hardware de vídeo do EV3 está configurado para, constantemente, ler essa área da memória e exibi-la na tela.</li>
-<li>Se você escrever dados diretamente nessa área da memória, a imagem na tela muda instantaneamente (no próximo ciclo de atualização).</li>
+<li>
+<p><strong>Atualização de Frame:</strong> O método <code>clearScreen()</code> utiliza a sequência <code>\033[2J\033[H</code> para limpar o display e retornar o cursor à posição inicial.</p>
+</li>
+<li>
+<p><strong>Feedback Visual:</strong> A seleção de itens (o cursor do usuário) é destacada invertendo as cores do terminal através do código ANSI <code>\033[7m</code> (Highlight) e resetada com <code>\033[0m</code>.</p>
+</li>
 </ul>
-<blockquote>
-<p>No EV3, o framebuffer é de 176x128 pixels, com 1 bit por pixel (preto e branco).</p>
-</blockquote>
-<h3 id="como-usar-o-framebuffer">Como Usar o Framebuffer</h3>
-<p>Para manipular o framebuffer diretamente, você pode abrir o dispositivo <code>/dev/fb0</code> e escrever dados nele. Aqui está um exemplo básico de como fazer isso:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"ev3dev.h"</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fcntl.h&gt;</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/mman.h&gt;</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;linux/fb.h&gt;</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/ioctl.h&gt;</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">set_console_bind</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">bind</span><span class="p">)</span><span class="w"> </span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="p">{</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="c1">// O arquivo de controle pode ser vtcon0 ou vtcon1.</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="c1">// No ev3dev, geralmente é o vtcon0.</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ofstream</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="s">"/sys/class/vtconsole/vtcon0/bind"</span><span class="p">);</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">f</span><span class="p">.</span><span class="n">is_open</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="c1">// Tenta o vtcon1 como fallback</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">        </span><span class="n">f</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="s">"/sys/class/vtconsole/vtcon1/bind"</span><span class="p">);</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">f</span><span class="p">.</span><span class="n">is_open</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Erro: Nao foi possivel abrir /sys/class/vtconsole/..."</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">    </span><span class="c1">// Escreve "0" para desvincular ou "1" para vincular</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span><span class="n">f</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">bind</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">"1"</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">"0"</span><span class="p">);</span>
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">    </span><span class="n">f</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
-<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="p">}</span>
-<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>
-<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
-<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="p">{</span>
-<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">    </span><span class="c1">// --- 1. Abrir o Framebuffer ---</span>
-<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">fb_fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="s">"/dev/fb0"</span><span class="p">,</span><span class="w"> </span><span class="n">O_RDWR</span><span class="p">);</span>
-<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fb_fd</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* erro */</span><span class="w"> </span><span class="p">}</span>
-<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">set_console_bind</span><span class="p">(</span><span class="nb">false</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// Falha</span>
-<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">    </span><span class="c1">// --- 2. Obter informações da tela (ESPECIALMENTE o line_length) ---</span>
-<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">    </span><span class="n">fb_fix_screeninfo</span><span class="w"> </span><span class="n">finfo</span><span class="p">;</span>
-<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ioctl</span><span class="p">(</span><span class="n">fb_fd</span><span class="p">,</span><span class="w"> </span><span class="n">FBIOGET_FSCREENINFO</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">finfo</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="w">        </span><span class="c1">// finfo.line_length nos dirá o "stride" (provavelmente 24 bytes)</span>
-<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="w">        </span><span class="cm">/* erro */</span>
-<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="n">screen_size_bytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">finfo</span><span class="p">.</span><span class="n">smem_len</span><span class="p">;</span><span class="w"> </span><span class="c1">// Tamanho total do buffer</span>
-<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">line_length_bytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">finfo</span><span class="p">.</span><span class="n">line_length</span><span class="p">;</span><span class="w"> </span><span class="c1">// "Stride" (bytes por linha)</span>
-<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="w">    </span><span class="c1">// --- 3. Mapear para a Memória ---</span>
-<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">fb_ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">mmap</span><span class="p">(</span>
-<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="w">        </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span>
-<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="w">        </span><span class="n">screen_size_bytes</span><span class="p">,</span><span class="w"> </span>
-<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a><span class="w">        </span><span class="n">PROT_READ</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">PROT_WRITE</span><span class="p">,</span><span class="w"> </span>
-<a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a><span class="w">        </span><span class="n">MAP_SHARED</span><span class="p">,</span><span class="w"> </span>
-<a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a><span class="w">        </span><span class="n">fb_fd</span><span class="p">,</span><span class="w"> </span>
-<a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a><span class="w">        </span><span class="mi">0</span>
-<a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a><span class="w">    </span><span class="p">);</span>
-<a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fb_ptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* erro */</span><span class="w"> </span><span class="p">}</span>
-<a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a><span class="w">    </span><span class="c1">// --- 4. Desenhar! ---</span>
-<a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a><span class="w">    </span><span class="c1">// Limpar a tela (definir todos os bytes como 0x00 = branco)</span>
-<a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a><span class="w">    </span><span class="n">memset</span><span class="p">(</span><span class="n">fb_ptr</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="n">screen_size_bytes</span><span class="p">);</span>
-<a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a><span class="w">    </span><span class="c1">// Desenhar um pixel em (x=10, y=5)</span>
-<a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
-<a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
-<a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a><span class="w">    </span><span class="c1">// Calcular o endereço do byte</span>
-<a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a><span class="w">    </span><span class="c1">// Pula 'y' linhas (cada uma com 'line_length_bytes')</span>
-<a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a><span class="w">    </span><span class="c1">// e avança 'x / 8' bytes na linha atual</span>
-<a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">byte_ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fb_ptr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">line_length_bytes</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span>
-<a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a><span class="w">    </span><span class="c1">// Calcular o bit dentro desse byte</span>
-<a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a><span class="w">    </span><span class="c1">// (o bit 0 é o mais à esquerda, ou o mais à direita? </span>
-<a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a><span class="w">    </span><span class="c1">// No EV3, é little-endian, então o bit 0 é o da direita)</span>
-<a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">bit_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
-<a id="__codelineno-1-68" name="__codelineno-1-68" href="#__codelineno-1-68"></a><span class="w">    </span><span class="c1">// Ligar o pixel (preto)</span>
-<a id="__codelineno-1-69" name="__codelineno-1-69" href="#__codelineno-1-69"></a><span class="w">    </span><span class="o">*</span><span class="n">byte_ptr</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">bit_index</span><span class="p">);</span>
-<a id="__codelineno-1-70" name="__codelineno-1-70" href="#__codelineno-1-70"></a><span class="w">    </span><span class="c1">// Esperar um pouco para ver</span>
-<a id="__codelineno-1-71" name="__codelineno-1-71" href="#__codelineno-1-71"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">sleep_for</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">seconds</span><span class="p">(</span><span class="mi">5</span><span class="p">));</span>
-<a id="__codelineno-1-72" name="__codelineno-1-72" href="#__codelineno-1-72"></a><span class="w">    </span><span class="c1">// --- 5. Limpar ---</span>
-<a id="__codelineno-1-73" name="__codelineno-1-73" href="#__codelineno-1-73"></a><span class="w">    </span><span class="n">munmap</span><span class="p">(</span><span class="n">fb_ptr</span><span class="p">,</span><span class="w"> </span><span class="n">screen_size_bytes</span><span class="p">);</span>
-<a id="__codelineno-1-74" name="__codelineno-1-74" href="#__codelineno-1-74"></a><span class="w">    </span><span class="n">close</span><span class="p">(</span><span class="n">fb_fd</span><span class="p">);</span>
-<a id="__codelineno-1-75" name="__codelineno-1-75" href="#__codelineno-1-75"></a><span class="w">    </span><span class="c1">// Lembre-se de reativar o console se você o desligou!</span>
-<a id="__codelineno-1-76" name="__codelineno-1-76" href="#__codelineno-1-76"></a><span class="w">    </span><span class="n">set_console_bind</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
-<a id="__codelineno-1-77" name="__codelineno-1-77" href="#__codelineno-1-77"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<a id="__codelineno-1-78" name="__codelineno-1-78" href="#__codelineno-1-78"></a><span class="p">}</span>
-</code></pre></div>
 
 
 
