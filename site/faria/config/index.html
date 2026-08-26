@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://rinobot-team.github.io/Lego-Docs/faria/sensores/">
+        <link rel="canonical" href="https://rinobot-team.github.io/Lego-Docs/faria/config/">
       
       
-        <link rel="prev" href="../motores/">
+        <link rel="prev" href="../hal/">
       
       
-        <link rel="next" href="../lcd/">
+        <link rel="next" href="../estrategias/">
       
       
         
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Sensores - Sumô Lego - Documentação</title>
+        <title>Configuração dos Robôs - Sumô Lego - Documentação</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#migracao-dos-sensores" class="md-skip">
+        <a href="#configuracao-dos-robos" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Sensores
+              Configuração dos Robôs
             
           </span>
         </div>
@@ -518,6 +518,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -574,14 +580,98 @@
   
   
     <li class="md-nav__item">
-      <a href="../motores/" class="md-nav__link">
+      <a href="../arquitetura/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Motores
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ferramental/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ferramental e Ambiente de Desenvolvimento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura de Núcleo e Engine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Camada de Abstração de Hardware
   
 
     
@@ -618,7 +708,7 @@
   <span class="md-ellipsis">
     
   
-    Sensores
+    Configuração dos Robôs
   
 
     
@@ -636,7 +726,7 @@
   <span class="md-ellipsis">
     
   
-    Sensores
+    Configuração dos Robôs
   
 
     
@@ -662,10 +752,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#diferencas-principais" class="md-nav__link">
+  <a href="#configuracao-declarativa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Diferenças Principais
+        Configuração Declarativa
       
     </span>
   </a>
@@ -673,10 +763,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tabela-de-equivalencias" class="md-nav__link">
+  <a href="#apelidos-aliases" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tabela de Equivalências
+        Apelidos (Aliases)
       
     </span>
   </a>
@@ -684,41 +774,24 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exemplo-de-codigo" class="md-nav__link">
+  <a href="#template-de-configuracao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exemplo de Código
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Exemplo de Código">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nxt-robotc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        NXT (RobotC)
+        Template de Configuração
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#equivalente-ev3-ev3dev-c" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#exemplo-de-configuracao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Equivalente EV3 (EV3DEV C++)
+        Exemplo de Configuração
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -738,14 +811,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../lcd/" class="md-nav__link">
+      <a href="../estrategias/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    LCD
+    Estratégias
   
 
     
@@ -766,14 +839,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../arquitetura/" class="md-nav__link">
+      <a href="../lcd/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Arquitetura
+    LCD (WIP)
   
 
     
@@ -821,10 +894,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#diferencas-principais" class="md-nav__link">
+  <a href="#configuracao-declarativa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Diferenças Principais
+        Configuração Declarativa
       
     </span>
   </a>
@@ -832,10 +905,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tabela-de-equivalencias" class="md-nav__link">
+  <a href="#apelidos-aliases" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tabela de Equivalências
+        Apelidos (Aliases)
       
     </span>
   </a>
@@ -843,41 +916,24 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exemplo-de-codigo" class="md-nav__link">
+  <a href="#template-de-configuracao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exemplo de Código
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Exemplo de Código">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nxt-robotc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        NXT (RobotC)
+        Template de Configuração
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#equivalente-ev3-ev3dev-c" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#exemplo-de-configuracao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Equivalente EV3 (EV3DEV C++)
+        Exemplo de Configuração
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -901,67 +957,46 @@
   
 
 
-<h1 id="migracao-dos-sensores">Migração dos Sensores</h1>
-<h2 id="diferencas-principais">Diferenças Principais</h2>
-<p>Assim como os motores, os sensores no NXT são acessados diretamente através de arrays pré-definidos, como <code>SensorValue[]</code>, onde cada índice corresponde a uma porta específica do sensor. Por exemplo, <code>SensorValue[S1]</code> acessa o sensor conectado à porta 1.</p>
-<p>No EV3, os sensores são representados como objetos de classes específicas, como <code>ev3dev::sensor::color_sensor</code> ou <code>ev3dev::sensor::ultrasonic_sensor</code>. Cada sensor é instanciado com base na porta à qual está conectado, utilizando a nomenclatura do sistema de arquivos do Linux. A leitura dos valores dos sensores é feita através de métodos específicos dessas classes.</p>
-<h2 id="tabela-de-equivalencias">Tabela de Equivalências</h2>
-<table>
-<thead>
-<tr>
-<th>Ação</th>
-<th>NXT</th>
-<th>EV3</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Ler Valor do Sensor Ultrassônico</td>
-<td><code>SensorType[S2] = sensorSONAR; int dist = SensorValue[S2]; // Em cm</code></td>
-<td><code>ultrasonic_sensor us(INPUT_2); int dist = us.distance_centimeters();</code></td>
-</tr>
-<tr>
-<td>Ler Valor do Sensor de Cor</td>
-<td><code>SensorType[S3] = sensorCOLORFULL; int color = SensorValue[S3];</code></td>
-<td><code>color_sensor cs(INPUT_3); int color = cs.color();</code></td>
-</tr>
-<tr>
-<td>Configurar Sensor de Toque</td>
-<td><code>SensorType[S1] = sensorEV3_TOUCH;</code></td>
-<td><code>touch_sensor ts(INPUT_1);</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="exemplo-de-codigo">Exemplo de Código</h2>
-<h3 id="nxt-robotc">NXT (RobotC)</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">task</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="n">SensorType</span><span class="p">[</span><span class="n">S1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensorTouch</span><span class="p">;</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="n">SensorValue</span><span class="p">[</span><span class="n">S1</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="p">{</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="c1">// Espera</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="c1">// Pressionado</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">}</span>
+<h1 id="configuracao-dos-robos">Configuração dos Robôs</h1>
+<p>No LEGO sempre tivemos um problema imenso: pelo fato de que todos os robôs são diferentes, cada um com seus sensores e motores, o código de controle precisa ser adaptado para cada robô. Isso significa que, se você tem 10 robôs diferentes, você precisa manter 10 cópias do mesmo código, uma para cada robô. Isso é um pesadelo de manutenção e por isso nosso Github é uma zona.</p>
+<p>Para eliminar essa fragilidade, o FARIA adota uma arquitetura de Configuração Declarativa baseada no conceito de <em>Data-Driven Design</em>.</p>
+<h2 id="configuracao-declarativa">Configuração Declarativa</h2>
+<p>A Engine do framework é projetada para ser uma "folha em branco" (ou <em>tabula rasa</em> como diria John Locke). O robô nasce sem saber quantos sensores possui, onde eles estão conectados ou quais são os seus motores.</p>
+<p>A "psiquê" e a topologia física do robô são definidas inteiramente em um arquivo de texto externo no formato JSON. A responsabilidade de ler esse arquivo, traduzir o texto e popular a classe Robot com os periféricos corretos pertence exclusivamente à classe <code>ConfigParser</code>. Ela atua como uma Fábrica Dinâmica, instanciando as classes da HAL e injetando as dependências na Engine em tempo de execução.</p>
+<h2 id="apelidos-aliases">Apelidos (Aliases)</h2>
+<p>A maior vantagem da configuração declarativa é a criação de um dicionário entre o físico e o lógico. O ConfigParser lê o JSON, concatena o prefixo exigido pelo sistema operacional do EV3 (transformando <code>"B" em "outB"</code> por exemplo), inicializa a classe de hardware da HAL e a cadastra na Engine com o carimbo do <em>alias</em>.</p>
+<p>A partir desse momento, a Estratégia C++ desenvolvida por nós perde completamente a noção de onde o cabo está ligado. Ela interage apenas com o Blackboard utilizando as chaves lógicas ("motorEsquerdo"). Se, no dia do campeonato, o cabo for movido para a porta "C", basta a equipe editar uma letra no arquivo de configuração de texto, sem precisar recompilar ou tocar em uma única linha de C++.</p>
+<h2 id="template-de-configuracao">Template de Configuração</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nt">"robot_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">"sensors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="p">{</span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="nt">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">},</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="p">],</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">"motors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="p">{</span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="nt">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">},</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="p">],</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="nt">"strategies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="p">{</span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="nt">"class"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">},</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="p">]</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">}</span>
 </code></pre></div>
-<h3 id="equivalente-ev3-ev3dev-c">Equivalente EV3 (EV3DEV C++)</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ev3dev.h&quot;</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">ev3dev</span><span class="p">;</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">{</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="c1">// 1. Instanciar o sensor de toque na porta 1</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="n">touch_sensor</span><span class="w"> </span><span class="n">ts</span><span class="p">(</span><span class="n">INPUT_1</span><span class="p">);</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="c1">// 2. Esperar em um loop enquanto não estiver pressionado</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="n">ts</span><span class="p">.</span><span class="n">is_pressed</span><span class="p">()</span><span class="w"> </span><span class="p">)</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="p">{</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="c1">// É uma boa prática esperar um pouco em loops</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">sleep_for</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">  </span><span class="c1">// Pressionado</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="p">}</span>
+<h2 id="exemplo-de-configuracao">Exemplo de Configuração</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nt">"robot_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Robogilson"</span><span class="p">,</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">"sensors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">        </span><span class="p">{</span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ultrasonic"</span><span class="p">,</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"> </span><span class="nt">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ultrassom1"</span><span class="p">},</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="p">{</span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ultrasonic"</span><span class="p">,</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w"> </span><span class="nt">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ultrassom2"</span><span class="p">},</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="p">{</span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"color"</span><span class="p">,</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w"> </span><span class="nt">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cor"</span><span class="p">}</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="p">],</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="nt">"motors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="p">{</span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w"> </span><span class="nt">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"motorEsquerdo"</span><span class="p">},</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="p">{</span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w"> </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B"</span><span class="p">,</span><span class="w"> </span><span class="nt">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"motorDireito"</span><span class="p">}</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="p">],</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="nt">"strategies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="p">{</span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AgressivoMaluco"</span><span class="p">,</span><span class="w"> </span><span class="nt">"class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AgressivoMalucoStrategy"</span><span class="p">},</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span><span class="p">{</span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ViraMortal"</span><span class="p">,</span><span class="w"> </span><span class="nt">"class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ViraMortalStrategy"</span><span class="p">}</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="p">]</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="p">}</span>
 </code></pre></div>
 
 
@@ -1017,7 +1052,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.annotate", "content.tabs.link", "navigation.indexes", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

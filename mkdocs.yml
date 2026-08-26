@@ -19,7 +19,7 @@ nav:
     - Camada de Abstração de Hardware: faria/hal.md
     - Configuração dos Robôs: faria/config.md
     - Estratégias: faria/estrategias.md
-    - LCD (WIP): faria/lcd.md
+    - LCD e UI: faria/lcd.md
 theme:
   name: material
   logo: img/favicon.png

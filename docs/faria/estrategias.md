@@ -100,4 +100,30 @@ std::string chosenStrategy = "EvitaObstaculo";
 robot.setStrategy(registry.create(chosenStrategy));
 ```
 
-> **Importante:** Essa última parte da estratégia será mudada em breve, com a implementação da interface gráfica de seleção de estratégias, que permitirá ao usuário escolher a estratégia desejada sem precisar recompilar o código.
+## Strategy Composite
+
+É uma exigência tática comum que o robô execute uma manobra de abertura nos primeiros milissegundos da luta (Estratégia Inicial) e, em seguida, mude para a sua rotina de batalha principal.
+
+A classe `DualStrategy` atua como um wrapper. Ela assina o mesmo contrato da classe base `Strategy`, o que a torna invisível para a Engine do robô. Seu único papel é encapsular dois ponteiros de estratégia distintos e transferir o controle do Blackboard da estratégia inicial para a principal após um tempo predeterminado de execução.
+
+> Por padrão esse tempo é de **2000 ms**.
+
+Em vez de sobrecarregar o `StrategyRegistry` com o registro de todas as combinações possíveis de estratégias iniciais e principais, a montagem da `DualStrategy` deve ser feita sob demanda de forma declarativa, por exemplo:
+
+```cpp
+if (!cfg.initialStrategy.empty()) {
+    // Caso uma manobra inicial tenha sido selecionada na interface, 
+    // a DualStrategy envelopa as duas lógicas.
+    finalStrategy = std::make_unique<DualStrategy>(
+        "EstrategiaMuitoFoda",
+        registry.create(cfg.initialStrategy), 
+        registry.create(cfg.mainStrategy),    
+        2000                                  
+    );
+} else {
+    // Caso a abertura seja dispensada, a principal assume com zero overhead.
+    finalStrategy = registry.create(cfg.mainStrategy);
+}
+
+robot.setStrategy(std::move(finalStrategy));
+```
