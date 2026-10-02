@@ -127,3 +127,19 @@ if (!cfg.initialStrategy.empty()) {
 
 robot.setStrategy(std::move(finalStrategy));
 ```
+
+## Máquinas de Estados
+
+Na robótica de tempo real, bloquear a thread principal com comandos como `sleep()` ou laços while interrompe a leitura dos sensores e "cega" o robô. O FARIA soluciona manobras sequenciais complexas (como as estratégias Olezinho e AutoAsas) através de Máquinas de Estado Finito (FSM).
+
+### Conceito
+
+Uma FSM divide o comportamento do robô em "Estados" discretos e mutuamente exclusivos. Em vez de esperar uma ação terminar bloqueando o código, a estratégia verifica rapidamente em qual estado está, envia o pulso correspondente para os motores e devolve o controle para o loop de execução.
+
+### Aplicação
+
+Utilizamos um `enum class State` privado dentro da estratégia (ex: `OPEN_WINGS`, `COMBAT`). O método `execute()` contém um bloco switch/case que roteia a lógica baseado no estado atual.
+
+### Transição e Sincronização
+
+Quando a meta física do estado atual é atingida (ex: o encoder bateu o alvo numérico), a variável de estado é atualizada, acionando o próximo bloco case no ciclo seguinte. Para evitar Race Conditions no instante zero, é ideal que a FSM sempre valide se o Blackboard já recebeu a primeira leitura de hardware utilizando `std::optional::has_value()` antes de calcular o alvo, como na estratégia **AutoAsas**.

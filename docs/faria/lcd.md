@@ -4,6 +4,31 @@ A interface de usuário do FARIA foi projetada sob o paradigma de **Text User In
 
 Tudo está definido em `include/UI.hpp` e só deve ser chamado em `main.cpp`.
 
+## Utilização
+
+### Navegação Física
+
+- *Cima / Baixo*: Navega entre as opções do menu (cursor vertical).
+- *Esquerda / Direita*: Cicla entre os valores das opções.
+- *Enter*: Seleciona a opção atual.
+
+### Tela 1
+
+O primeiro painel foca exclusivamente na escolha das inteligências, lendo as chaves registradas no `config.json`.
+
+- *Princ*: Estratégia principal, combate infinito.
+- *Inic*: Estratégia inicial, abertura de batalha. Possui fallback nativo de "Nenhuma", executando a principal direto.
+
+### Tela 2
+
+Após confirmar as estratégias, o painel transita para a configuração especial de estratégias.
+
+- *L. Pr* (Lado Principal): Define a direção da estratégia principal.
+- *A. Pr* (Angulo Principal): Define o ângulo de ataque da estratégia principal.
+- *L. In* (Lado Inicial): Define a direção da estratégia inicial.
+- *A. In* (Angulo Inicial): Define o ângulo de ataque da estratégia inicial.
+- *5s*: Toggle para ativar/desativar os 5 segundos de inicio.
+
 ## Restrições de Hardware
 
 O EV3 possui um display LCD monocromático passivo com resolução de **178x128 pixels**.
