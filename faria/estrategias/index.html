@@ -884,6 +884,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#taticas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Táticas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Táticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-implementar-uma-tatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como implementar uma Tática?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-uso-uma-tatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como uso uma Tática?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1059,6 +1098,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#taticas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Táticas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Táticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-implementar-uma-tatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como implementar uma Tática?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-uso-uma-tatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como uso uma Tática?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1194,6 +1272,47 @@
 <p>Utilizamos um <code>enum class State</code> privado dentro da estratégia (ex: <code>OPEN_WINGS</code>, <code>COMBAT</code>). O método <code>execute()</code> contém um bloco switch/case que roteia a lógica baseado no estado atual.</p>
 <h3 id="transicao-e-sincronizacao">Transição e Sincronização</h3>
 <p>Quando a meta física do estado atual é atingida (ex: o encoder bateu o alvo numérico), a variável de estado é atualizada, acionando o próximo bloco case no ciclo seguinte. Para evitar Race Conditions no instante zero, é ideal que a FSM sempre valide se o Blackboard já recebeu a primeira leitura de hardware utilizando <code>std::optional::has_value()</code> antes de calcular o alvo, como na estratégia <strong>AutoAsas</strong>.</p>
+<h2 id="taticas">Táticas</h2>
+<p>Anteriormente, sempre que queriamos que o robô abrisse as asas ou fizesse uma varredura de busca, acabávamos copiando e colando blocos inteiros de código de movimentação de motores dentro das novas estratégias. Isso inflava os arquivos, quebrava o princípio <em>DRY (Don't Repeat Yourself)</em> e multiplicava bugs.</p>
+<p>Nossa solução foi utilizar o princípio de <strong>Composição sobre Herança</strong>. Em vez de escrever lógicas gigantescas em cada estratégia, criaremos <strong>Táticas</strong>, classes modulares que obedecem a um contrato restrito e atuam como <em>Sub-Máquinas de Estado</em>. A Estratégia Principal deixa de calcular encoders e passa a atuar apenas como uma <em>"Orquestradora"</em>.</p>
+<h3 id="como-implementar-uma-tatica">Como implementar uma Tática?</h3>
+<p>Toda tática deve ser criada na pasta <code>include/tactics/</code> e herdar da interface base <code>Tactic</code>. O contrato exige a implementação de três métodos cruciais:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Tactic</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="c1">// Processa a lógica usando a memória central</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">execute</span><span class="p">(</span><span class="n">Blackboard</span><span class="o">&amp;</span><span class="w"> </span><span class="n">bb</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="c1">// Avisa a Estratégia Orquestradora que a manobra acabou</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="p">[[</span><span class="na">nodiscard</span><span class="p">]]</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isFinished</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="c1">// Limpa as variáveis para a tática ser reutilizada no mesmo round</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">reset</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="p">};</span>
+</code></pre></div>
+<p>Ao criar uma tática concreta, você deve declarar suas próprias variáveis de controle de estado e meta de encoder. Quando o motor atingir o alvo, envie velocidade zero e mude sua flag interna para que o <code>isFinished()</code> retorne verdadeiro.</p>
+<h3 id="como-uso-uma-tatica">Como uso uma Tática?</h3>
+<p>Na sua Estratégia Principal, o uso é extremamente limpo. Você declara a Tática como uma variável membro, o que garante segurança de memória. Durante o estado correspondente da sua Máquina de Estados, você apenas delega a execução para a tática e aguarda ela sinalizar que terminou:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">AutoAsasStrategy</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Strategy</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">private</span><span class="o">:</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="n">OpenWingsTactic</span><span class="w"> </span><span class="n">m_wingTactic</span><span class="p">;</span><span class="w"> </span><span class="c1">// 1. Instancia a tática por Composição</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">execute</span><span class="p">(</span><span class="n">Blackboard</span><span class="o">&amp;</span><span class="w"> </span><span class="n">bb</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">m_currentState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="no">State</span><span class="o">::</span><span class="no">OPEN_WINGS</span><span class="p">:</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">                </span><span class="c1">// 2. Delega o controle do hardware para a tática</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">                </span><span class="n">m_wingTactic</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">bb</span><span class="p">);</span><span class="w"> </span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">                </span><span class="c1">// 3. Monitora o fim para avançar de estado</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m_wingTactic</span><span class="p">.</span><span class="n">isFinished</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">                    </span><span class="n">m_currentState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">State</span><span class="o">::</span><span class="n">COMBAT</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">                </span><span class="c1">// ...</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="p">};</span>
+</code></pre></div>
 
 
 
