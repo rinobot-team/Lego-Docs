@@ -143,3 +143,54 @@ Utilizamos um `enum class State` privado dentro da estratégia (ex: `OPEN_WINGS`
 ### Transição e Sincronização
 
 Quando a meta física do estado atual é atingida (ex: o encoder bateu o alvo numérico), a variável de estado é atualizada, acionando o próximo bloco case no ciclo seguinte. Para evitar Race Conditions no instante zero, é ideal que a FSM sempre valide se o Blackboard já recebeu a primeira leitura de hardware utilizando `std::optional::has_value()` antes de calcular o alvo, como na estratégia **AutoAsas**.
+
+## Táticas
+Anteriormente, sempre que queriamos que o robô abrisse as asas ou fizesse uma varredura de busca, acabávamos copiando e colando blocos inteiros de código de movimentação de motores dentro das novas estratégias. Isso inflava os arquivos, quebrava o princípio *DRY (Don't Repeat Yourself)* e multiplicava bugs.
+
+Nossa solução foi utilizar o princípio de **Composição sobre Herança**. Em vez de escrever lógicas gigantescas em cada estratégia, criaremos **Táticas**, classes modulares que obedecem a um contrato restrito e atuam como *Sub-Máquinas de Estado*. A Estratégia Principal deixa de calcular encoders e passa a atuar apenas como uma *"Orquestradora"*.
+
+### Como implementar uma Tática?
+Toda tática deve ser criada na pasta `include/tactics/` e herdar da interface base `Tactic`. O contrato exige a implementação de três métodos cruciais:
+
+```cpp
+class Tactic {
+public:
+    // Processa a lógica usando a memória central
+    virtual void execute(Blackboard& bb) = 0;
+    
+    // Avisa a Estratégia Orquestradora que a manobra acabou
+    [[nodiscard]] virtual bool isFinished() const = 0;
+    
+    // Limpa as variáveis para a tática ser reutilizada no mesmo round
+    virtual void reset() = 0; 
+};
+```
+
+Ao criar uma tática concreta, você deve declarar suas próprias variáveis de controle de estado e meta de encoder. Quando o motor atingir o alvo, envie velocidade zero e mude sua flag interna para que o `isFinished()` retorne verdadeiro.
+
+### Como uso uma Tática?
+
+Na sua Estratégia Principal, o uso é extremamente limpo. Você declara a Tática como uma variável membro, o que garante segurança de memória. Durante o estado correspondente da sua Máquina de Estados, você apenas delega a execução para a tática e aguarda ela sinalizar que terminou:
+
+```cpp
+class AutoAsasStrategy : public Strategy {
+private:
+    OpenWingsTactic m_wingTactic; // 1. Instancia a tática por Composição
+    
+public:
+    void execute(Blackboard& bb) override {
+        switch (m_currentState) {
+            case State::OPEN_WINGS:
+                // 2. Delega o controle do hardware para a tática
+                m_wingTactic.execute(bb); 
+                
+                // 3. Monitora o fim para avançar de estado
+                if (m_wingTactic.isFinished()) {
+                    m_currentState = State::COMBAT; 
+                }
+                break;
+                // ...
+        }
+    }
+};
+```

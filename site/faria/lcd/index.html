@@ -806,6 +806,56 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#utilizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Utilização
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Utilização">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#navegacao-fisica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Navegação Física
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tela-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tela 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tela-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tela 2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#restricoes-de-hardware" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -898,6 +948,56 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#utilizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Utilização
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Utilização">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#navegacao-fisica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Navegação Física
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tela-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tela 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tela-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tela 2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#restricoes-de-hardware" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -970,6 +1070,28 @@
 <h1 id="arquitetura-e-design-da-interface-de-usuario-tui">Arquitetura e Design da Interface de Usuário (TUI)</h1>
 <p>A interface de usuário do FARIA foi projetada sob o paradigma de <strong>Text User Interface (TUI)</strong>, operando diretamente no terminal físico (TTY0) do EV3. Tentei fazer uma UX parecida com a do NXT, acho que está bem funcional.</p>
 <p>Tudo está definido em <code>include/UI.hpp</code> e só deve ser chamado em <code>main.cpp</code>.</p>
+<h2 id="utilizacao">Utilização</h2>
+<h3 id="navegacao-fisica">Navegação Física</h3>
+<ul>
+<li><em>Cima / Baixo</em>: Navega entre as opções do menu (cursor vertical).</li>
+<li><em>Esquerda / Direita</em>: Cicla entre os valores das opções.</li>
+<li><em>Enter</em>: Seleciona a opção atual.</li>
+</ul>
+<h3 id="tela-1">Tela 1</h3>
+<p>O primeiro painel foca exclusivamente na escolha das inteligências, lendo as chaves registradas no <code>config.json</code>.</p>
+<ul>
+<li><em>Princ</em>: Estratégia principal, combate infinito.</li>
+<li><em>Inic</em>: Estratégia inicial, abertura de batalha. Possui fallback nativo de "Nenhuma", executando a principal direto.</li>
+</ul>
+<h3 id="tela-2">Tela 2</h3>
+<p>Após confirmar as estratégias, o painel transita para a configuração especial de estratégias.</p>
+<ul>
+<li><em>L. Pr</em> (Lado Principal): Define a direção da estratégia principal.</li>
+<li><em>A. Pr</em> (Angulo Principal): Define o ângulo de ataque da estratégia principal.</li>
+<li><em>L. In</em> (Lado Inicial): Define a direção da estratégia inicial.</li>
+<li><em>A. In</em> (Angulo Inicial): Define o ângulo de ataque da estratégia inicial.</li>
+<li><em>5s</em>: Toggle para ativar/desativar os 5 segundos de inicio.</li>
+</ul>
 <h2 id="restricoes-de-hardware">Restrições de Hardware</h2>
 <p>O EV3 possui um display LCD monocromático passivo com resolução de <strong>178x128 pixels</strong>.</p>
 <h3 id="ajuste-de-kernel">Ajuste de Kernel</h3>

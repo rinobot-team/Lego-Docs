@@ -834,6 +834,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#maquinas-de-estados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Máquinas de Estados
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Máquinas de Estados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conceito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conceito
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transicao-e-sincronizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transição e Sincronização
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -956,6 +1006,56 @@
       
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maquinas-de-estados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Máquinas de Estados
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Máquinas de Estados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conceito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conceito
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transicao-e-sincronizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transição e Sincronização
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1086,6 +1186,14 @@
 <a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
 <a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="n">robot</span><span class="p">.</span><span class="n">setStrategy</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">finalStrategy</span><span class="p">));</span>
 </code></pre></div>
+<h2 id="maquinas-de-estados">Máquinas de Estados</h2>
+<p>Na robótica de tempo real, bloquear a thread principal com comandos como <code>sleep()</code> ou laços while interrompe a leitura dos sensores e "cega" o robô. O FARIA soluciona manobras sequenciais complexas (como as estratégias Olezinho e AutoAsas) através de Máquinas de Estado Finito (FSM).</p>
+<h3 id="conceito">Conceito</h3>
+<p>Uma FSM divide o comportamento do robô em "Estados" discretos e mutuamente exclusivos. Em vez de esperar uma ação terminar bloqueando o código, a estratégia verifica rapidamente em qual estado está, envia o pulso correspondente para os motores e devolve o controle para o loop de execução.</p>
+<h3 id="aplicacao">Aplicação</h3>
+<p>Utilizamos um <code>enum class State</code> privado dentro da estratégia (ex: <code>OPEN_WINGS</code>, <code>COMBAT</code>). O método <code>execute()</code> contém um bloco switch/case que roteia a lógica baseado no estado atual.</p>
+<h3 id="transicao-e-sincronizacao">Transição e Sincronização</h3>
+<p>Quando a meta física do estado atual é atingida (ex: o encoder bateu o alvo numérico), a variável de estado é atualizada, acionando o próximo bloco case no ciclo seguinte. Para evitar Race Conditions no instante zero, é ideal que a FSM sempre valide se o Blackboard já recebeu a primeira leitura de hardware utilizando <code>std::optional::has_value()</code> antes de calcular o alvo, como na estratégia <strong>AutoAsas</strong>.</p>
 
 
 
